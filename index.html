@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Късметчо</title>
+<meta name="description" content="A lucky note with your morning coffee — fun fortunes, love, money, laughs and horoscopes. 8 languages.">
+<meta name="theme-color" content="#17100c">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+/* Шрифтът Comfortaa е в папката fonts/ (без външни заявки) — покрива латиница, кирилица и гръцки */
+@font-face{font-family:Comfortaa; font-weight:500 700; font-display:swap; src:url(fonts/comfortaa-cyrillic-ext.woff2) format('woff2'); unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}
+@font-face{font-family:Comfortaa; font-weight:500 700; font-display:swap; src:url(fonts/comfortaa-cyrillic.woff2) format('woff2'); unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:Comfortaa; font-weight:500 700; font-display:swap; src:url(fonts/comfortaa-greek.woff2) format('woff2'); unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;}
+@font-face{font-family:Comfortaa; font-weight:500 700; font-display:swap; src:url(fonts/comfortaa-latin-ext.woff2) format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:Comfortaa; font-weight:500 700; font-display:swap; src:url(fonts/comfortaa-latin.woff2) format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+:root{ --bg:#17100c; --panel:#231913; --panel2:#2e2119; --line:#3f2f24; --ink:#f7ecdb; --muted:#b49e88; --crema:#f2b24a; --rose:#ec8296; --paper:#f7ecdb; --paperInk:#2a1a12; --disp:Comfortaa,system-ui,sans-serif; }
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html,body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
+body{background:radial-gradient(90% 46% at 50% 0%, #3b2716 0%, var(--bg) 70%) no-repeat, var(--bg); min-height:100vh;}
+button,input{font:inherit; color:inherit;}
+button{border:0; cursor:pointer;}
+.app{max-width:480px; margin:0 auto; padding:14px 16px calc(28px + env(safe-area-inset-bottom));}
+
+.top{display:flex; align-items:center; gap:9px; margin-bottom:6px;}
+.top h1{font:700 1.35rem/1 var(--disp); margin:0; letter-spacing:-.02em;}
+.top h1 b{color:var(--crema);}
+.pill{background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:.8rem; font-weight:700;}
+.top .streak{margin-left:auto;}
+
+.hero{text-align:center; padding:4px 2px 0;}
+.cupBtn{background:none; padding:0; width:190px; height:190px; display:block; margin:0 auto -6px;}
+.cupBtn svg{width:100%; height:100%; overflow:visible;}
+.cup.bob{animation:bob 3s ease-in-out infinite;}
+.cup.flip{animation:flip 1.2s cubic-bezier(.5,0,.3,1);}
+.cup.shake{animation:shake .7s ease-in-out;}
+.steam path{animation:steam 2.6s ease-in-out infinite;}
+.steam path:nth-child(2){animation-delay:.5s;} .steam path:nth-child(3){animation-delay:1s;}
+.zz{animation:zz 3s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes flip{0%{transform:rotate(0) scale(1)}45%{transform:rotate(180deg) scale(.9)}62%{transform:rotate(180deg) scale(.9) translateY(7px)}100%{transform:rotate(360deg) scale(1)}}
+@keyframes shake{0%,100%{transform:rotate(0)}15%{transform:rotate(-13deg)}30%{transform:rotate(11deg)}45%{transform:rotate(-9deg)}60%{transform:rotate(7deg)}80%{transform:rotate(-3deg)}}
+@keyframes steam{0%{opacity:0; transform:translateY(4px)}40%{opacity:.6}100%{opacity:0; transform:translateY(-8px)}}
+@keyframes zz{0%,100%{opacity:.25; transform:translateY(0)}50%{opacity:1; transform:translateY(-3px)}}
+@keyframes pop{0%{opacity:0; transform:translateY(14px) rotate(-1.5deg) scale(.96)}100%{opacity:1; transform:none}}
+@media (prefers-reduced-motion: reduce){ .cup, .steam path, .zz, .slip{animation:none !important;} }
+
+.hello{font:700 1.3rem/1.25 var(--disp); margin:0 0 4px;}
+.sub{color:var(--muted); font-size:.92rem; margin:0 auto 16px; max-width:22em;}
+.main{background:var(--crema); color:#2a1a12; border-radius:999px; padding:14px 28px; font:700 1.02rem/1 var(--disp); box-shadow:0 10px 30px rgba(242,178,74,.25);}
+.main:active{transform:scale(.97);}
+
+/* Късметчето е хартийка с назъбени краища — това е „лицето“ на приложението и в споделените картинки */
+.slip{animation:pop .5s cubic-bezier(.2,.9,.3,1.2); background:var(--paper); color:var(--paperInk); padding:22px 18px 16px; text-align:left; margin:10px 0 0;
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 51% repeat-x, conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/14px 51% repeat-x;
+  mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 51% repeat-x, conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/14px 51% repeat-x;}
+.slip .tag{font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:#a0672a; font-weight:800;}
+.slip .txt{font:700 1.16rem/1.42 var(--disp); margin:8px 0 12px; white-space:pre-line;}
+.slip .lucky{display:flex; flex-wrap:wrap; gap:6px 14px; font-size:.8rem; color:#6d5443; border-top:1px dashed #cbb79d; padding-top:10px; margin-bottom:10px;}
+.slip .lucky b{color:var(--paperInk);}
+.slip .grounds{display:grid; gap:6px; font-size:.84rem; color:#4a3628; border-top:1px dashed #cbb79d; padding-top:10px; margin-bottom:10px;}
+.slip .grounds .gt{font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:#a0672a; font-weight:800;}
+.slip .grounds b{color:var(--paperInk);}
+.acts{display:flex; gap:6px;}
+.acts button{flex:1; background:#ecdcc4; color:var(--paperInk); border-radius:10px; padding:9px 4px; font-size:.8rem; font-weight:700;}
+.acts button.on{background:#f5c6cf; color:#9c2942;}
+.stars{display:grid; grid-template-columns:auto 1fr; gap:3px 12px; font-size:.86rem; border-top:1px dashed #cbb79d; padding-top:10px; margin-bottom:10px;}
+.stars span{color:#6d5443;} .stars b{color:#c98a2b; letter-spacing:.08em;}
+.after{color:var(--muted); font-size:.86rem; margin:14px 0 0;}
+
+h2{font:700 .78rem/1 var(--disp); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:26px 2px 10px;}
+.cats{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.cat{background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:14px 12px 13px; text-align:left; position:relative; overflow:hidden;}
+.cat:active{transform:scale(.98);}
+.cat .ico{font-size:1.6rem; line-height:1;}
+.cat b{display:block; margin-top:9px; font:700 .95rem/1.25 var(--disp);}
+.cat small{color:var(--muted); font-size:.76rem; line-height:1.3; display:block; margin-top:2px;}
+.cat.lock b,.cat.lock small,.cat.lock .ico{opacity:.62;}
+.cat .badge{position:absolute; top:10px; right:10px; font-size:.66rem; font-weight:800; background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:2px 8px; color:var(--crema);}
+.cat.wide{grid-column:1 / -1; display:flex; align-items:center; gap:12px; background:linear-gradient(100deg, #3a2a1c, var(--panel));}
+.cat.wide b{margin:0;}
+.unlock{width:100%; margin-top:12px; background:none; border:1.5px dashed var(--crema); color:var(--crema); border-radius:16px; padding:13px; font:700 .95rem/1.2 var(--disp);}
+.row{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px;}
+.row button{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:13px 8px; font-weight:700; font-size:.9rem;}
+footer{margin-top:26px; text-align:center; color:var(--muted); font-size:.72rem; line-height:1.6;}
+footer a{color:var(--muted);}
+
+.overlay{position:fixed; inset:0; background:rgba(0,0,0,.62); display:none; align-items:flex-end; justify-content:center; z-index:10;}
+.sheet{background:var(--panel); border:1px solid var(--line); border-bottom:0; border-radius:24px 24px 0 0; width:100%; max-width:480px; max-height:92vh; overflow:auto; padding:18px 16px calc(20px + env(safe-area-inset-bottom));}
+.sheet h3{margin:0 0 12px; font:700 1.15rem/1.2 var(--disp);}
+.sheet p{color:var(--muted); font-size:.9rem; margin:0 0 14px;}
+.btn{display:block; width:100%; border-radius:14px; padding:13px; font:700 .95rem/1.2 var(--disp); margin-top:8px;}
+.btn.gold{background:var(--crema); color:#2a1a12;}
+.btn.ghost{background:var(--panel2); border:1px solid var(--line);}
+.msg{color:var(--rose); font-size:.85rem; min-height:18px; margin:6px 0 0;}
+.ask{width:100%; background:var(--panel2); border:1px solid var(--line); border-radius:14px; padding:13px 14px; outline:0;}
+.ask:focus{border-color:var(--crema);}
+.signs{display:grid; grid-template-columns:repeat(4, 1fr); gap:8px;}
+.signs button{background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:8px 2px; font-size:.72rem; font-weight:700; line-height:1.3;}
+.signs button span{display:block; font-size:1.3rem;}
+.signs button.on{border-color:var(--crema); color:var(--crema);}
+.seg{display:flex; background:var(--panel2); border-radius:12px; padding:3px; margin:12px 0 0;}
+.seg button{flex:1; background:none; border-radius:10px; padding:9px; font-weight:700; font-size:.88rem; color:var(--muted);}
+.seg button.on{background:var(--crema); color:#2a1a12;}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;}
+.chip{background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:7px 12px; font-size:.82rem; font-weight:700;}
+.chip.on{border-color:var(--crema); color:var(--crema);}
+.chip.lock{opacity:.55;}
+.chip i{display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:6px; vertical-align:-1px;}
+.shapeRow{display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-bottom:14px;}
+.shapeRow button{background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:6px 2px; font-size:.66rem; font-weight:700; line-height:1.25;}
+.shapeRow button.on{border-color:var(--crema); color:var(--crema);}
+.shapeRow button.lock svg{opacity:.5;}
+.shapeRow svg{width:100%; max-width:52px; height:auto; display:block; margin:0 auto; overflow:visible;}
+.shapeRow small{display:block; color:var(--muted); font-size:.6rem;}
+.label{font-size:.78rem; color:var(--muted); margin:2px 0 8px;}
+.fav{background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:10px 12px; margin-bottom:8px; font-size:.92rem; white-space:pre-line; display:flex; gap:10px;}
+.fav span{flex:1;} .fav button{background:none; color:var(--muted); font-size:.8rem; text-decoration:underline; padding:0; align-self:flex-start;}
+.langs{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+.langs button{background:var(--panel2); border:1px solid var(--line); border-radius:12px; padding:12px; font-weight:700; text-align:left;}
+.langs button.on{border-color:var(--crema); color:var(--crema);}
+.langs small{color:var(--muted); font-weight:600; margin-right:8px;}
+.toast{position:fixed; left:50%; bottom:28px; transform:translateX(-50%); background:var(--paper); color:var(--paperInk); border-radius:999px; padding:10px 18px; font-weight:700; font-size:.88rem; z-index:20; box-shadow:0 10px 30px rgba(0,0,0,.45); white-space:nowrap;}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><h1 id="title"></h1><button class="pill streak" id="streak" type="button"></button><button class="pill" id="langBtn" type="button"></button></div>
+  <div class="hero" id="hero"></div>
+  <h2 id="hMore"></h2>
+  <div class="cats" id="freeCats"></div>
+  <h2 id="hPro"></h2>
+  <div class="cats" id="proCats"></div>
+  <button class="unlock" id="unlockBtn" type="button"></button>
+  <div class="row"><button type="button" id="cupBtn2"></button><button type="button" id="favBtn"></button></div>
+  <footer><span id="foot"></span><br>© 2026 PARKBOOK · <a href="mailto:support@parkbook.bg">support@parkbook.bg</a></footer>
+</div>
+<div class="overlay" id="overlay"><div class="sheet" id="sheet"></div></div>
+
+<script>
+// ==== Късметчо — късметче към кафето ====
+// Всичко е на телефона (localStorage): без регистрация, без сървър. Текстовете на всеки език са в lang/<код>.js.
+window.L10N = {};
+const LANGS = [['bg','Български'],['en','English'],['ru','Русский'],['ro','Română'],['el','Ελληνικά'],['it','Italiano'],['es','Español'],['fr','Français']];
+const K = {day:'kusmetcho-day-v1', streak:'kusmetcho-streak-v1', premium:'kusmetcho-premium-v1', cup:'kusmetcho-cup-v1', favs:'kusmetcho-favs-v1',
+           bags:'kusmetcho-bags-v1', device:'kusmetcho-device-v1', sign:'kusmetcho-sign-v1', adult:'kusmetcho-18-v1', lang:'kusmetcho-lang-v1'};
+const read = (k, f)=>{ try{ const v = JSON.parse(localStorage.getItem(k)); return v ?? f; }catch(e){ return f; } };
+const write = (k, v)=>{ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} };
+const esc = s=>String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $ = id=>document.getElementById(id);
+let LANG = 'bg', L = null, T = null;                       // L = целият езиков пакет, T = надписите (L.ui)
+const t = (key, vars)=>String(T[key] ?? key).replace(/\{(\w+)\}/g, (_, k)=>vars && vars[k] !== undefined ? vars[k] : '');
+
+function pickLang(){
+  const q = new URLSearchParams(location.search).get('lang');
+  if(q && LANGS.some(l=>l[0] === q)) return q;
+  const saved = read(K.lang, null);
+  if(saved && LANGS.some(l=>l[0] === saved)) return saved;
+  for(const n of (navigator.languages || [navigator.language || 'en'])){
+    const c = String(n).slice(0, 2).toLowerCase();
+    if(LANGS.some(l=>l[0] === c)) return c;
+  }
+  return 'en';
+}
+function loadLang(code){
+  return new Promise((ok, fail)=>{
+    if(L10N[code]) return ok();
+    const s = document.createElement('script');
+    s.src = `lang/${code}.js`; s.onload = ok; s.onerror = fail;
+    document.head.appendChild(s);
+  });
+}
+async function setLang(code){
+  try{ await loadLang(code); }catch(e){ if(code !== 'en') return setLang('en'); }
+  LANG = code; L = L10N[code]; T = L.ui;
+  document.documentElement.lang = code;
+  document.title = `${T.appName} — ${T.tagline}`;
+  renderAll();
+}
+
+// Днешната дата по часовника на телефона ('ГГГГ-ММ-ДД')
+function todayISO(d = new Date()){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function addDaysISO(iso, n){ const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + n); return todayISO(d); }
+function weekKey(){ const d = new Date(); d.setDate(d.getDate() - (d.getDay() + 6) % 7); return todayISO(d); }   // понеделникът на седмицата
+function fmt(iso){ const m = iso.split('-'); return `${m[2]}.${m[1]}.${m[0]}`; }
+
+// Случайност, която се повтаря за същия ключ — едно и също късметче/хороскоп за целия ден
+function hash(s){ let h = 2166136261; for(let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function rng(seed){ let a = hash(seed); return ()=>{ a |= 0; a = a + 0x6D2B79F5 | 0; let x = Math.imul(a ^ a >>> 15, 1 | a); x = x + Math.imul(x ^ x >>> 7, 61 | x) ^ x; return ((x ^ x >>> 14) >>> 0) / 4294967296; }; }
+const pick = (arr, r)=>arr[Math.floor(r() * arr.length)];
+function deviceId(){ let d = read(K.device, null); if(!d){ d = Math.random().toString(36).slice(2) + Date.now().toString(36); write(K.device, d); } return d; }
+function isPremium(){ return read(K.premium, null) === 1; }
+function streak(){ return read(K.streak, {n:0, last:'', best:0}); }
+
+// ==== Категории ====
+// kind: list = списък с късметчета; combo = сглобява се от три части (хиляди комбинации);
+// oracle = въпрос с отговор; horo = хороскоп. pro = в платената версия; adult = пита за 18 години.
+const CATS = [
+  {id:'combo',      ico:'🎲', kind:'combo', wide:true},
+  {id:'love',       ico:'💘'},
+  {id:'money',      ico:'💰'},
+  {id:'fun',        ico:'😄'},
+  {id:'motivation', ico:'🚀'},
+  {id:'oracle',     ico:'🔮', kind:'oracle', wide:true},
+  {id:'adult',      ico:'😏', pro:true, adult:true},
+  {id:'dark',       ico:'💀', pro:true},
+  {id:'spicy',      ico:'🌶️', pro:true, adult:true},
+  {id:'horo',       ico:'✨', pro:true, kind:'horo'}
+];
+// Символите „в утайката“ — имената и значенията са в езиковите пакети, в същия ред
+const SYMBOLS = ['🐦','🛣️','❤️','🔑','💍','🌙','☀️','🐟','🌳','⭐','🐍','🏠','✉️','🦋','⚓','🌊'];
+const SIGN_SYM = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+const SIGN_DATES = ['21.03 – 19.04','20.04 – 20.05','21.05 – 20.06','21.06 – 22.07','23.07 – 22.08','23.08 – 22.09','23.09 – 22.10','23.10 – 21.11','22.11 – 21.12','22.12 – 19.01','20.01 – 18.02','19.02 – 20.03'];
+
+// Следващо късметче от категорията — без повторение, докато не се изредят всички
+function nextFrom(catId){
+  const bags = read(K.bags, {}), key = LANG + ':' + catId;
+  let bag = bags[key] || [];
+  if(!bag.length || bag.some(i=>i >= L[catId].length)){
+    bag = L[catId].map((_, i)=>i);
+    for(let i = bag.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [bag[i], bag[j]] = [bag[j], bag[i]]; }
+  }
+  const idx = bag.pop();
+  bags[key] = bag; write(K.bags, bags);
+  return L[catId][idx];
+}
+const comboFortune = ()=>[L.combo.when, L.combo.what, L.combo.kick].map(a=>a[Math.floor(Math.random() * a.length)]).join(' ');
+
+// ==== Чашата-талисман ====
+// Форма, цвят и аксесоар. Част са безплатни, част се печелят със серия от дни, част идват с премиум.
+const CUP_COLORS = [
+  {id:'crema', c:'#f2b24a', d:'#c98a2b', ink:'#2a1a12'},
+  {id:'mint',  c:'#7fc79a', d:'#56a274', ink:'#1d2b22'},
+  {id:'rose',  c:'#e87f93', d:'#c25a70', ink:'#2e161b'},
+  {id:'sky',   c:'#6fa8f0', d:'#4a82cc', ink:'#14213a'},
+  {id:'gold',  c:'#f5d06b', d:'#d1a93b', ink:'#2a1a12', streak:7},
+  {id:'noir',  c:'#5a3a28', d:'#3d2619', ink:'#f7ecdb', pro:true}
+];
+const CUP_SHAPES = [{id:'mug'}, {id:'espresso'}, {id:'turska', streak:3}, {id:'togo', pro:true}, {id:'latte', pro:true}];
+const CUP_ACCS = [{id:'none'}, {id:'bow'}, {id:'glasses', streak:3}, {id:'hat', streak:7}, {id:'crown', pro:true}];
+function unlocked(item){
+  if(item.pro) return isPremium();
+  if(item.streak) return Math.max(streak().best || 0, streak().n) >= item.streak;
+  return true;
+}
+const lockLabel = item=>item.pro ? t('premium') : t('lockStreak', {n: item.streak});
+function myCup(){
+  const s = read(K.cup, {});
+  const ok = (list, id, def)=>{ const it = list.find(x=>x.id === id); return it && unlocked(it) ? id : def; };
+  return {shape: ok(CUP_SHAPES, s.shape, 'mug'), color: ok(CUP_COLORS, s.color, 'crema'), acc: ok(CUP_ACCS, s.acc, 'none')};
+}
+// Рисунката: mood = sleepy (преди късметчето) или happy. viewBox 0 0 100 100. still = без пара (за малки картинки и снимки).
+function cupSvg(cup, mood, still){
+  const {c, d, ink} = CUP_COLORS.find(x=>x.id === cup.color) || CUP_COLORS[0];
+  const coffee = (cx, cy, rx)=>`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${(rx/4).toFixed(1)}" fill="${d}"/><ellipse cx="${cx}" cy="${cy + .6}" rx="${rx - 3}" ry="${(rx/4 - 1.4).toFixed(1)}" fill="#4b2e1e"/>`;
+  const S = {
+    mug:      {fx:47, fy:62, top:33, body:`<path d="M70 50 Q88 50 88 62 Q88 74 70 74" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/><rect x="22" y="36" width="50" height="48" rx="12" fill="${c}"/>${coffee(47, 38.5, 22)}`},
+    espresso: {fx:47, fy:63, top:41, body:`<ellipse cx="47" cy="85" rx="34" ry="5" fill="${d}"/><path d="M68 56 Q82 56 82 64 Q82 72 66 72" fill="none" stroke="${c}" stroke-width="6" stroke-linecap="round"/><path d="M24 46 L70 46 L64 77 Q63 82 58 82 L36 82 Q31 82 30 77 Z" fill="${c}"/>${coffee(47, 46.5, 23)}`},
+    turska:   {fx:50, fy:63, top:39, body:`<rect x="42" y="79" width="16" height="6" rx="2.5" fill="${d}"/><path d="M26 44 L74 44 Q74 81 50 81 Q26 81 26 44 Z" fill="${c}"/>${[32,38,44,50,56,62,68].map(x=>`<circle cx="${x}" cy="51" r="1.4" fill="${d}"/>`).join('')}${coffee(50, 44.5, 24)}`},
+    togo:     {fx:50, fy:62, top:22, body:`<path d="M30 34 L70 34 L65 86 Q64.5 90 61 90 L39 90 Q35.5 90 35 86 Z" fill="#f3e6d3"/><path d="M31.6 50 L68.4 50 L66.1 75 L33.9 75 Z" fill="${c}"/><rect x="27" y="27" width="46" height="9" rx="4" fill="${d}"/><rect x="33" y="22.5" width="34" height="6.5" rx="3" fill="${d}"/>`},
+    latte:    {fx:47, fy:60, top:20, body:`<path d="M66 44 Q83 44 83 59 Q83 74 66 74" fill="none" stroke="${c}" stroke-width="6.5" stroke-linecap="round"/><rect x="26" y="23" width="42" height="66" rx="10" fill="${c}"/><rect x="26" y="38" width="42" height="5" fill="${d}" opacity=".45"/><ellipse cx="47" cy="25.5" rx="18.5" ry="4.6" fill="${d}"/><ellipse cx="47" cy="26" rx="15.5" ry="3.2" fill="#f7ecdb"/>`}
+  }[cup.shape];
+  const {fx, fy, top} = S;
+  const eyes = [fx - 8, fx + 8].map(x=> mood === 'sleepy'
+    ? `<path d="M${x-3.6} ${fy} Q${x} ${fy+3} ${x+3.6} ${fy}" fill="none" stroke="${ink}" stroke-width="2.2" stroke-linecap="round"/>`
+    : `<circle cx="${x}" cy="${fy}" r="3.4" fill="${ink}"/><circle cx="${x-1}" cy="${fy-1.1}" r="1.1" fill="#fff" opacity=".8"/>`).join('');
+  const mouth = mood === 'sleepy'
+    ? `<ellipse cx="${fx}" cy="${fy+8.5}" rx="2.2" ry="1.8" fill="${ink}"/>`
+    : `<path d="M${fx-6} ${fy+6.5} Q${fx} ${fy+13} ${fx+6} ${fy+6.5}" fill="none" stroke="${ink}" stroke-width="2.8" stroke-linecap="round"/>`;
+  const cheeks = `<circle cx="${fx-13}" cy="${fy+6}" r="3" fill="#f08a7b" opacity=".5"/><circle cx="${fx+13}" cy="${fy+6}" r="3" fill="#f08a7b" opacity=".5"/>`;
+  const acc = {
+    bow:     `<path d="M${fx-18} ${top+1} L${fx-11} ${top+5} L${fx-18} ${top+9} Z M${fx-4} ${top+1} L${fx-11} ${top+5} L${fx-4} ${top+9} Z" fill="#e25d7a"/><circle cx="${fx-11}" cy="${top+5}" r="2" fill="#b83e5c"/>`,
+    glasses: `<circle cx="${fx-8}" cy="${fy}" r="5.6" fill="rgba(255,255,255,.14)" stroke="${ink}" stroke-width="1.8"/><circle cx="${fx+8}" cy="${fy}" r="5.6" fill="rgba(255,255,255,.14)" stroke="${ink}" stroke-width="1.8"/><path d="M${fx-2.4} ${fy} L${fx+2.4} ${fy}" stroke="${ink}" stroke-width="1.8"/>`,
+    hat:     `<path d="M${fx-10} ${top+3} L${fx+10} ${top+3} L${fx} ${top-17} Z" fill="#7c5cff"/><path d="M${fx-6.6} ${top-3.5} L${fx+6.6} ${top-3.5}" stroke="#f7ecdb" stroke-width="2"/><circle cx="${fx}" cy="${top-18}" r="2.6" fill="#f5d06b"/>`,
+    crown:   `<path d="M${fx-11} ${top+3} L${fx-11} ${top-8} L${fx-5.5} ${top-3} L${fx} ${top-11} L${fx+5.5} ${top-3} L${fx+11} ${top-8} L${fx+11} ${top+3} Z" fill="#f5c542" stroke="#c99a1e" stroke-width=".8"/><circle cx="${fx}" cy="${top-11}" r="1.5" fill="#e25d7a"/>`
+  }[cup.acc] || '';
+  const overHead = cup.acc === 'hat' || cup.acc === 'crown';
+  const steam = (still || overHead) ? '' : (mood === 'sleepy'
+    ? `<text class="zz" x="${fx+16}" y="${top-4}" font-size="9" font-weight="700" fill="#b49e88">z</text><text class="zz" x="${fx+23}" y="${top-11}" font-size="6.5" font-weight="700" fill="#b49e88">z</text>`
+    : `<g class="steam" fill="none" stroke="#f7ecdb" stroke-width="2.2" stroke-linecap="round">${[-9, 0, 9].map(dx=>`<path d="M${fx+dx} ${top-3} q-3.5 -4.5 0 -9 q3.5 -4.5 0 -9"/>`).join('')}</g>`);
+  return `<ellipse cx="${fx}" cy="93" rx="27" ry="2.6" fill="#000" opacity=".28"/>${steam}${S.body}${cheeks}${eyes}${mouth}${acc}`;
+}
+const cupMarkup = (cup, mood, cls, still)=>`<svg viewBox="0 0 100 100" aria-hidden="true"><g class="cup ${cls || ''}" style="transform-origin:50px 60px">${cupSvg(cup, mood, still)}</g></svg>`;
+
+// ==== Началният екран ====
+function greeting(){ const h = new Date().getHours(); return L.greet[h < 5 ? 3 : h < 11 ? 0 : h < 18 ? 1 : 2]; }
+function dailyFortune(){
+  const r = rng(todayISO() + deviceId());
+  const text = pick(L.daily, r), num = 1 + Math.floor(r() * 49), color = pick(L.horo.colors, r);
+  // Три различни символа „в утайката“
+  const idx = SYMBOLS.map((_, i)=>i);
+  const syms = [0, 1, 2].map(()=>idx.splice(Math.floor(r() * idx.length), 1)[0]);
+  return {text, num, color, syms};
+}
+function renderHero(justFlipped){
+  const revealed = read(K.day, '') === todayISO();
+  const st = streak();
+  $('streak').textContent = `🔥 ${st.last === todayISO() || st.last === addDaysISO(todayISO(), -1) ? st.n : 0}`;
+  if(!revealed){
+    $('hero').innerHTML = `
+      <button class="cupBtn" id="cupTap" type="button" aria-label="${esc(t('flip'))}">${cupMarkup(myCup(), 'sleepy', 'bob')}</button>
+      <div class="hello">${esc(greeting())}</div>
+      <p class="sub">${esc(t('heroSub'))}</p>
+      <button class="main" id="flipBtn" type="button">${esc(t('flip'))} ☕</button>`;
+    const go = ()=>{
+      const g = document.querySelector('#cupTap .cup');
+      g.classList.remove('bob'); g.classList.add('flip');
+      $('flipBtn').disabled = true;
+      setTimeout(()=>{ markRevealed(); renderHero(true); }, 1200);
+    };
+    $('cupTap').addEventListener('click', go);
+    $('flipBtn').addEventListener('click', go);
+    return;
+  }
+  const f = dailyFortune();
+  const grounds = `<div class="grounds"><div class="gt">${esc(t('grounds'))}</div>${f.syms.map(i=>`<div>${SYMBOLS[i]} <b>${esc(L.symbols[i][0])}</b> — ${esc(L.symbols[i][1])}</div>`).join('')}</div>`;
+  const lucky = `<div class="lucky"><span>${esc(t('luckyNum'))}: <b>${f.num}</b></span><span>${esc(t('luckyColor'))}: <b>${esc(f.color)}</b></span></div>`;
+  $('hero').innerHTML = `
+    <button class="cupBtn" id="cupTap" type="button" aria-label="${esc(t('myCup'))}">${cupMarkup(myCup(), 'happy', 'bob')}</button>
+    ${slip(t('dailyTag', {d: fmt(todayISO())}), f.text, grounds + lucky)}
+    <p class="after">${esc(t('comeBack'))}</p>`;
+  bindSlip($('hero'), f.text, t('dailyTag', {d: fmt(todayISO())}));
+  $('cupTap').addEventListener('click', openCup);
+  if(justFlipped && st.n > 1) toast(`🔥 ${t('streak')}: ${st.n}`);
+}
+function markRevealed(){
+  const day = todayISO();
+  if(read(K.day, '') === day) return;
+  const st = streak();
+  const n = st.last === addDaysISO(day, -1) ? st.n + 1 : 1;
+  write(K.streak, {n, last: day, best: Math.max(st.best || 0, n)});
+  write(K.day, day);
+}
+
+// Хартийката с късметче + бутоните „Запази“, „Сподели“ и „Картинка“
+function slip(tag, text, extra){
+  const saved = read(K.favs, []).includes(text);
+  return `<div class="slip"><div class="tag">${esc(tag)}</div><div class="txt">${esc(text)}</div>${extra || ''}
+    <div class="acts"><button type="button" data-save class="${saved ? 'on' : ''}">${saved ? '❤' : '♡'} ${esc(t(saved ? 'savedOn' : 'save'))}</button><button type="button" data-share>↗ ${esc(t('share'))}</button><button type="button" data-img>🖼 ${esc(t('shareImg'))}</button></div></div>`;
+}
+function bindSlip(root, text, tag){
+  const save = root.querySelector('[data-save]');
+  save.addEventListener('click', ()=>{
+    let favs = read(K.favs, []);
+    const has = favs.includes(text);
+    favs = has ? favs.filter(x=>x !== text) : [text, ...favs].slice(0, 200);
+    write(K.favs, favs);
+    save.classList.toggle('on', !has);
+    save.textContent = `${has ? '♡' : '❤'} ${t(has ? 'save' : 'savedOn')}`;
+  });
+  root.querySelector('[data-share]').addEventListener('click', async ()=>{
+    const msg = `${text}\n\n☕ ${T.appName}`;
+    try{
+      if(navigator.share){ await navigator.share({text: msg}); return; }
+      await navigator.clipboard.writeText(msg);
+      toast(t('copied'));
+    }catch(e){}
+  });
+  root.querySelector('[data-img]').addEventListener('click', ()=>shareImage(text, tag));
+}
+
+// ==== Картинка за споделяне (1080×1350 — става за Instagram, Facebook, Viber) ====
+// Чашата на човека + хартийката с текста + името на приложението. Всяко споделяне е безплатна реклама.
+async function shareImage(text, tag){
+  try{
+    if(document.fonts && document.fonts.ready) await document.fonts.ready;
+    const W = 1080, H = 1350, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    const x = cv.getContext('2d');
+    const g = x.createRadialGradient(W/2, 0, 60, W/2, 300, 1100); g.addColorStop(0, '#4a321c'); g.addColorStop(1, '#17100c');
+    x.fillStyle = g; x.fillRect(0, 0, W, H);
+    // чашата
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 100 100">${cupSvg(myCup(), 'happy', true)}</svg>`;
+    const img = new Image();
+    await new Promise((ok, no)=>{ img.onload = ok; img.onerror = no; img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); });
+    x.drawImage(img, (W - 420)/2, 70, 420, 420);
+    // текстът — пренасяне по думи, шрифтът се смалява, ако е дълъг
+    const boxW = 860, pad = 70;
+    let size = 62, lines = [];
+    const wrap = ()=>{
+      x.font = `700 ${size}px Comfortaa, system-ui, sans-serif`; lines = [];
+      for(const para of text.split('\n')){
+        let line = '';
+        for(const w of para.split(' ')){
+          const test = line ? line + ' ' + w : w;
+          if(x.measureText(test).width > boxW - pad*2 && line){ lines.push(line); line = w; } else line = test;
+        }
+        lines.push(line);
+      }
+    };
+    wrap(); while(lines.length * size * 1.38 > 520 && size > 34){ size -= 4; wrap(); }
+    const lh = size * 1.38, boxH = lines.length * lh + pad*2 + 50, bx = (W - boxW)/2, by = 500;
+    // хартийката с назъбени краища
+    x.fillStyle = '#f7ecdb'; x.beginPath();
+    const z = 22, n = Math.round(boxW / (z*2));
+    x.moveTo(bx, by + z);
+    for(let i = 0; i < n; i++){ x.lineTo(bx + (i + .5) * boxW / n, by); x.lineTo(bx + (i + 1) * boxW / n, by + z); }
+    x.lineTo(bx + boxW, by + boxH - z);
+    for(let i = n; i > 0; i--){ x.lineTo(bx + (i - .5) * boxW / n, by + boxH); x.lineTo(bx + (i - 1) * boxW / n, by + boxH - z); }
+    x.closePath(); x.shadowColor = 'rgba(0,0,0,.45)'; x.shadowBlur = 50; x.shadowOffsetY = 24; x.fill();
+    x.shadowColor = 'transparent';
+    x.fillStyle = '#a0672a'; x.font = '800 26px system-ui, sans-serif'; x.textBaseline = 'top';
+    x.fillText(String(tag || T.appName).toUpperCase().split('').join(' '), bx + pad, by + pad - 10);
+    x.fillStyle = '#2a1a12'; x.font = `700 ${size}px Comfortaa, system-ui, sans-serif`;
+    lines.forEach((l, i)=>x.fillText(l, bx + pad, by + pad + 40 + i * lh));
+    // подписът
+    x.textAlign = 'center'; x.fillStyle = '#f2b24a'; x.font = '700 54px Comfortaa, system-ui, sans-serif';
+    x.fillText(`☕ ${T.appName}`, W/2, H - 150);
+    x.fillStyle = '#b49e88'; x.font = '600 30px system-ui, sans-serif';
+    x.fillText(T.tagline, W/2, H - 80);
+    const blob = await new Promise(ok=>cv.toBlob(ok, 'image/png'));
+    const file = new File([blob], 'kusmetcho.png', {type:'image/png'});
+    if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], text: `☕ ${T.appName}`}); return; }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'kusmetcho.png'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+    toast(t('imgSaved'));
+  }catch(e){ if(e && e.name !== 'AbortError') toast(t('imgFail')); }
+}
+
+// ==== Категориите ====
+function renderCats(){
+  const card = c=>{
+    const lock = c.pro && !isPremium();
+    const badge = c.pro ? `<span class="badge">${lock ? '🔒 ' : ''}${c.adult ? '18+' : esc(t('premium'))}</span>` : '';
+    const name = esc(L.cats[c.id][0]), sub = esc(L.cats[c.id][1]);
+    return c.wide ? `<button type="button" class="cat wide" data-cat="${c.id}"><span class="ico">${c.ico}</span><span><b>${name}</b><small>${sub}</small></span></button>`
+                  : `<button type="button" class="cat ${lock ? 'lock' : ''}" data-cat="${c.id}"><span class="ico">${c.ico}</span>${badge}<b>${name}</b><small>${sub}</small></button>`;
+  };
+  $('freeCats').innerHTML = CATS.filter(c=>!c.pro).map(card).join('');
+  $('proCats').innerHTML = CATS.filter(c=>c.pro).map(card).join('');
+  document.querySelectorAll('[data-cat]').forEach(b=>b.addEventListener('click', ()=>openCat(CATS.find(c=>c.id === b.dataset.cat))));
+  $('unlockBtn').style.display = isPremium() ? 'none' : '';
+  $('unlockBtn').textContent = t('unlockAll', {p: T.price});
+}
+function openSheet(html){ $('sheet').innerHTML = html; $('overlay').style.display = 'flex'; $('sheet').scrollTop = 0; }
+function closeSheet(){ $('overlay').style.display = 'none'; }
+$('overlay').addEventListener('click', e=>{ if(e.target.id === 'overlay') closeSheet(); });
+const closeBtn = ()=>`<button class="btn ghost" id="close" type="button">${esc(t('close'))}</button>`;
+const bindClose = ()=>$('close').addEventListener('click', closeSheet);
+
+function openCat(cat){
+  const name = L.cats[cat.id][0];
+  if(cat.pro && !isPremium()){ openUnlock(cat); return; }
+  if(cat.adult && !read(K.adult, false)){
+    openSheet(`<h3>${cat.ico} ${esc(name)}</h3><p>${esc(t('ask18'))}</p>
+      <button class="btn gold" id="yes18" type="button">${esc(t('yes18'))}</button><button class="btn ghost" id="close" type="button">${esc(t('no'))}</button>`);
+    $('yes18').addEventListener('click', ()=>{ write(K.adult, true); openCat(cat); });
+    bindClose();
+    return;
+  }
+  if(cat.kind === 'horo'){ openHoro(); return; }
+  if(cat.kind === 'oracle'){ openOracle(); return; }
+  const show = ()=>{
+    const text = cat.kind === 'combo' ? comboFortune() : nextFrom(cat.id);
+    openSheet(`<h3>${cat.ico} ${esc(name)}</h3>${slip(name, text)}
+      <button class="btn gold" id="more" type="button">${esc(t('another'))}</button>${closeBtn()}`);
+    bindSlip($('sheet'), text, name);
+    $('more').addEventListener('click', show);
+    bindClose();
+  };
+  show();
+}
+
+// ==== „Попитай чашата“ — задаваш въпрос, разклащаш и чашата отговаря ====
+// Същият въпрос в същия ден получава същия отговор — иначе не е оракул, а зарче.
+function openOracle(){
+  const name = L.cats.oracle[0];
+  openSheet(`<h3>🔮 ${esc(name)}</h3>
+    <div style="width:140px; height:140px; margin:0 auto" id="oCup">${cupMarkup(myCup(), 'happy', 'bob')}</div>
+    <p style="text-align:center; margin-top:4px">${esc(t('oracleSub'))}</p>
+    <input class="ask" id="q" type="text" maxlength="120" placeholder="${esc(t('oraclePh'))}" autocomplete="off">
+    <div id="oOut"></div>
+    <button class="btn gold" id="shakeBtn" type="button">${esc(t('oracleBtn'))}</button>${closeBtn()}`);
+  bindClose();
+  $('shakeBtn').addEventListener('click', ()=>{
+    const q = $('q').value.trim();
+    const g = document.querySelector('#oCup .cup');
+    g.classList.remove('bob', 'shake'); void g.getBoundingClientRect(); g.classList.add('shake');
+    $('shakeBtn').disabled = true;
+    setTimeout(()=>{
+      const r = q ? rng(q.toLowerCase() + todayISO() + deviceId()) : Math.random;
+      const text = (q ? `„${q}“\n` : '') + pick(L.oracle, r);
+      $('oOut').innerHTML = slip(name, text);
+      bindSlip($('oOut'), text, name);
+      $('shakeBtn').disabled = false; $('shakeBtn').textContent = t('oracleAgain');
+      g.classList.add('bob');
+    }, 720);
+  });
+}
+
+// ==== Хороскоп ====
+function horoscope(si, mode){
+  const key = mode === 'week' ? weekKey() : todayISO();
+  const r = rng(si + mode + key);
+  const stars = ()=>3 + Math.floor(r() * 3);
+  const H = L.horo;
+  const text = mode === 'week'
+    ? [pick(H.wStart, r), pick(H.wMid, r), pick(H.wEnd, r), t('weekFocus', {x: pick(H.focus, r)})].join(' ')
+    : [pick(H.open, r), L.traits[si], pick(H.love, r), pick(H.work, r), pick(H.tip, r)].join(' ');
+  const others = L.signs.filter((_, i)=>i !== si);
+  return {text, love: stars(), money: stars(), mood: stars(), num: 1 + Math.floor(r() * 49), color: pick(H.colors, r), match: pick(others, r),
+          title: mode === 'week' ? t('weekOf', {d: fmt(weekKey())}) : t('todayIs', {d: fmt(todayISO())})};
+}
+function openHoro(){
+  let si = read(K.sign, null), mode = 'day';
+  const name = L.cats.horo[0];
+  const draw = ()=>{
+    const grid = `<div class="signs">${L.signs.map((s, i)=>`<button type="button" data-sign="${i}" class="${i === si ? 'on' : ''}" title="${SIGN_DATES[i]}"><span>${SIGN_SYM[i]}</span>${esc(s)}</button>`).join('')}</div>`;
+    let body = `<p style="margin-top:12px">${esc(t('horoPick'))}</p>`, text = '', tag = name;
+    if(si !== null){
+      const h = horoscope(si, mode); text = h.text; tag = `${SIGN_SYM[si]} ${L.signs[si]} · ${h.title}`;
+      const bar = n=>'★'.repeat(n) + '☆'.repeat(5 - n);
+      body = `<div class="seg"><button type="button" data-mode="day" class="${mode === 'day' ? 'on' : ''}">${esc(t('day'))}</button><button type="button" data-mode="week" class="${mode === 'week' ? 'on' : ''}">${esc(t('week'))}</button></div>
+        ${slip(tag, h.text, `<div class="stars"><span>${esc(t('loveL'))}</span><b>${bar(h.love)}</b><span>${esc(t('moneyL'))}</span><b>${bar(h.money)}</b><span>${esc(t('moodL'))}</span><b>${bar(h.mood)}</b></div>
+        <div class="lucky"><span>${esc(t('luckyNum'))}: <b>${h.num}</b></span><span>${esc(t('luckyColor'))}: <b>${esc(h.color)}</b></span><span>${esc(t('match'))}: <b>${esc(h.match)}</b></span></div>`)}`;
+    }
+    openSheet(`<h3>✨ ${esc(name)}</h3>${grid}${body}${closeBtn()}`);
+    $('sheet').querySelectorAll('[data-sign]').forEach(b=>b.addEventListener('click', ()=>{ si = +b.dataset.sign; write(K.sign, si); draw(); }));
+    $('sheet').querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click', ()=>{ mode = b.dataset.mode; draw(); }));
+    if(si !== null) bindSlip($('sheet'), text, tag);
+    bindClose();
+  };
+  draw();
+}
+
+// ==== Премиум: еднократна покупка през Google Play / App Store ====
+// Тук се връзва плащането, когато приложението влезе в магазините (еднократен продукт „premium“).
+// Дотогава бутонът НЕ отключва нищо — само казва какво има вътре.
+function openUnlock(cat){
+  openSheet(`<h3>${cat ? `${cat.ico} ${esc(L.cats[cat.id][0])}` : `☕ ${esc(T.appName)} ${esc(t('premium'))}`}</h3>
+    <p>${esc(t('unlockText'))}</p>
+    <div class="chips">${CATS.filter(c=>c.pro).map(c=>`<span class="chip">${c.ico} ${esc(L.cats[c.id][0])}</span>`).join('')}<span class="chip">☕ ${esc(t('unlockExtras'))}</span></div>
+    <button class="btn gold" id="buy" type="button">${esc(t('buy', {p: T.price}))}</button>
+    <div class="msg" id="buyMsg"></div>${closeBtn()}`);
+  $('buy').addEventListener('click', ()=>{ $('buyMsg').textContent = t('soon'); });
+  bindClose();
+}
+$('unlockBtn').addEventListener('click', ()=>openUnlock());
+
+// ==== Моята чаша ====
+function openCup(){
+  const cup = myCup();
+  const thumb = shape=>`<svg viewBox="0 0 100 100">${cupSvg({shape, color: cup.color, acc:'none'}, 'happy', true)}</svg>`;
+  const chip = (it, kind, on, label)=>`<button type="button" class="chip ${on ? 'on' : ''} ${unlocked(it) ? '' : 'lock'}" data-kind="${kind}" data-id="${it.id}">${kind === 'color' ? `<i style="background:${it.c}"></i>` : ''}${unlocked(it) ? '' : '🔒 '}${esc(label)}${unlocked(it) ? '' : ` · ${esc(lockLabel(it))}`}</button>`;
+  openSheet(`<h3>☕ ${esc(t('myCup'))}</h3>
+    <div style="width:140px; height:140px; margin:0 auto 6px">${cupMarkup(cup, 'happy', 'bob')}</div>
+    <div class="label">${esc(t('shapeL'))}</div>
+    <div class="shapeRow">${CUP_SHAPES.map((s, i)=>`<button type="button" class="${cup.shape === s.id ? 'on' : ''} ${unlocked(s) ? '' : 'lock'}" data-kind="shape" data-id="${s.id}">${thumb(s.id)}${esc(L.shapes[i])}${unlocked(s) ? '' : `<small>🔒 ${esc(lockLabel(s))}</small>`}</button>`).join('')}</div>
+    <div class="label">${esc(t('colorL'))}</div>
+    <div class="chips">${CUP_COLORS.map((c, i)=>chip(c, 'color', cup.color === c.id, L.colors[i])).join('')}</div>
+    <div class="label">${esc(t('accL'))}</div>
+    <div class="chips">${CUP_ACCS.map((a, i)=>chip(a, 'acc', cup.acc === a.id, L.accs[i])).join('')}</div>
+    <p>${esc(t('cupHint'))}</p>
+    <button class="btn ghost" id="close" type="button">${esc(t('done'))}</button>`);
+  const lists = {shape: CUP_SHAPES, color: CUP_COLORS, acc: CUP_ACCS};
+  $('sheet').querySelectorAll('[data-kind]').forEach(b=>b.addEventListener('click', ()=>{
+    const it = lists[b.dataset.kind].find(x=>x.id === b.dataset.id);
+    if(!unlocked(it)){ if(it.pro) openUnlock(); else toast(t('unlockAt', {n: it.streak})); return; }
+    const c = myCup(); c[b.dataset.kind] = it.id; write(K.cup, c);
+    renderHero(); openCup();
+  }));
+  bindClose();
+}
+$('cupBtn2').addEventListener('click', openCup);
+$('streak').addEventListener('click', ()=>toast(`🔥 ${t('streak')}: ${streak().n} · ${t('best')}: ${streak().best || streak().n}`));
+
+// ==== Запазени ====
+function openFavs(){
+  const favs = read(K.favs, []);
+  openSheet(`<h3>❤ ${esc(t('saved'))}</h3>${favs.length ? favs.map((x, i)=>`<div class="fav"><span>${esc(x)}</span><button type="button" data-del="${i}">${esc(t('remove'))}</button></div>`).join('') : `<p>${esc(t('noFavs'))}</p>`}${closeBtn()}`);
+  $('sheet').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', ()=>{ const f = read(K.favs, []); f.splice(+b.dataset.del, 1); write(K.favs, f); openFavs(); }));
+  bindClose();
+}
+$('favBtn').addEventListener('click', openFavs);
+
+// ==== Език ====
+$('langBtn').addEventListener('click', ()=>{
+  openSheet(`<h3>🌍 ${esc(t('language'))}</h3><div class="langs">${LANGS.map(([c, n])=>`<button type="button" data-lang="${c}" class="${c === LANG ? 'on' : ''}"><small>${c.toUpperCase()}</small>${n}</button>`).join('')}</div>${closeBtn()}`);
+  $('sheet').querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click', async ()=>{ write(K.lang, b.dataset.lang); closeSheet(); await setLang(b.dataset.lang); }));
+  bindClose();
+});
+
+let toastT = null;
+function toast(text){
+  document.querySelectorAll('.toast').forEach(x=>x.remove());
+  const el = document.createElement('div'); el.className = 'toast'; el.textContent = text; document.body.appendChild(el);
+  clearTimeout(toastT); toastT = setTimeout(()=>el.remove(), 2600);
+}
+
+// Скрит тест за собственика: 7 бързи натискания на заглавието включват/изключват премиум.
+// МАХНИ ГО преди качване в магазините — иначе всеки може да отключи безплатно.
+let taps = 0, tapT = null;
+$('title').addEventListener('click', ()=>{
+  taps++; clearTimeout(tapT); tapT = setTimeout(()=>{ taps = 0; }, 1500);
+  if(taps >= 7){
+    taps = 0;
+    if(isPremium()) localStorage.removeItem(K.premium); else write(K.premium, 1);
+    renderAll(); toast(isPremium() ? 'Test: premium ON' : 'Test: premium OFF');
+  }
+});
+
+function renderAll(){
+  const n = T.appName;
+  $('title').innerHTML = `${esc(n.slice(0, -1))}<b>${esc(n.slice(-1))}</b>`;
+  $('langBtn').textContent = `🌍 ${LANG.toUpperCase()}`;
+  $('hMore').textContent = t('more'); $('hPro').textContent = t('premium');
+  $('cupBtn2').textContent = `☕ ${t('myCup')}`; $('favBtn').textContent = `❤ ${t('saved')}`;
+  $('foot').textContent = t('footer');
+  renderHero(); renderCats();
+}
+setLang(pickLang());
+// Ако приложението стои отворено през нощта — на сутринта показва новия ден
+document.addEventListener('visibilitychange', ()=>{ if(L && document.visibilityState === 'visible' && $('overlay').style.display !== 'flex') renderHero(); });
+if('serviceWorker' in navigator && location.protocol === 'https:'){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }); }
+</script>
+</body>
+</html>
