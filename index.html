@@ -82,7 +82,15 @@ h2{font:700 .78rem/1 var(--disp); letter-spacing:.14em; text-transform:uppercase
 .cat .badge{position:absolute; top:10px; right:10px; font-size:.66rem; font-weight:800; background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:2px 8px; color:var(--crema);}
 .cat.wide{grid-column:1 / -1; display:flex; align-items:center; gap:12px; background:linear-gradient(100deg, #3a2a1c, var(--panel));}
 .cat.wide b{margin:0;}
-.unlock{width:100%; margin-top:12px; background:none; border:1.5px dashed var(--crema); color:var(--crema); border-radius:16px; padding:13px; font:700 .95rem/1.2 var(--disp);}
+.proCard{margin-top:12px; border:1.5px solid var(--crema); border-radius:20px; padding:16px 16px 18px; background:linear-gradient(160deg, #3a2a1c, var(--panel) 70%); text-align:center;}
+.proCard .proT{font:700 1.05rem/1.25 var(--disp); color:var(--crema); margin-bottom:10px;}
+.proCard ul{list-style:none; padding:0; margin:0 0 10px; text-align:left; font-size:.88rem; display:grid; gap:6px;}
+.proCard li{color:var(--muted);} .proCard li b{color:var(--ink);}
+.proCard .proN{font-size:.8rem; color:var(--muted); margin-bottom:14px;}
+.proCard .main{width:100%; padding:14px 12px; font-size:.95rem;}
+.slip.peek{animation:none;}
+.slip .blur{filter:blur(6px); user-select:none; -webkit-user-select:none;}
+.slip .peekNote{font-size:.82rem; font-weight:700; color:#a0672a; border-top:1px dashed #cbb79d; padding-top:10px;}
 .row{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px;}
 .row button{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:13px 8px; font-weight:700; font-size:.9rem;}
 footer{margin-top:26px; text-align:center; color:var(--muted); font-size:.72rem; line-height:1.6;}
@@ -134,7 +142,7 @@ footer a{color:var(--muted);}
   <div class="cats" id="freeCats"></div>
   <h2 id="hPro"></h2>
   <div class="cats" id="proCats"></div>
-  <button class="unlock" id="unlockBtn" type="button"></button>
+  <div class="proCard" id="proCard"></div>
   <div class="row"><button type="button" id="cupBtn2"></button><button type="button" id="favBtn"></button></div>
   <footer><span id="foot"></span><br>© 2026 PARKBOOK · <a href="mailto:support@parkbook.bg">support@parkbook.bg</a></footer>
 </div>
@@ -146,7 +154,8 @@ footer a{color:var(--muted);}
 window.L10N = {};
 const LANGS = [['bg','Български'],['en','English'],['ru','Русский'],['ro','Română'],['el','Ελληνικά'],['it','Italiano'],['es','Español'],['fr','Français']];
 const K = {day:'kusmetcho-day-v1', streak:'kusmetcho-streak-v1', premium:'kusmetcho-premium-v1', cup:'kusmetcho-cup-v1', favs:'kusmetcho-favs-v1',
-           bags:'kusmetcho-bags-v1', device:'kusmetcho-device-v1', sign:'kusmetcho-sign-v1', adult:'kusmetcho-18-v1', lang:'kusmetcho-lang-v1'};
+           bags:'kusmetcho-bags-v1', device:'kusmetcho-device-v1', sign:'kusmetcho-sign-v1', adult:'kusmetcho-18-v1', lang:'kusmetcho-lang-v1',
+           taste:'kusmetcho-taste-v1'};
 const read = (k, f)=>{ try{ const v = JSON.parse(localStorage.getItem(k)); return v ?? f; }catch(e){ return f; } };
 const write = (k, v)=>{ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} };
 const esc = s=>String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -180,6 +189,7 @@ async function setLang(code){
   document.title = `${T.appName} — ${T.tagline}`;
   renderAll();
 }
+let giftShown = false;
 
 // Днешната дата по часовника на телефона ('ГГГГ-ММ-ДД')
 function todayISO(d = new Date()){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
@@ -204,7 +214,8 @@ const CATS = [
   {id:'money',      ico:'💰'},
   {id:'fun',        ico:'😄'},
   {id:'motivation', ico:'🚀'},
-  {id:'oracle',     ico:'🔮', kind:'oracle', wide:true},
+  {id:'oracle',     ico:'🔮', kind:'oracle'},
+  {id:'compat',     ico:'💞', kind:'compat'},
   {id:'adult',      ico:'😏', pro:true, adult:true},
   {id:'dark',       ico:'💀', pro:true},
   {id:'spicy',      ico:'🌶️', pro:true, adult:true},
@@ -227,7 +238,25 @@ function nextFrom(catId){
   bags[key] = bag; write(K.bags, bags);
   return L[catId][idx];
 }
-const comboFortune = ()=>[L.combo.when, L.combo.what, L.combo.kick].map(a=>a[Math.floor(Math.random() * a.length)]).join(' ');
+// Връща {text, ref}: ref е кратък адрес на късметчето (категория + номер), за да може да се прати с линк на приятел
+function nextRef(catId){
+  const text = nextFrom(catId);
+  return {text, ref: `l.${catId}.${L[catId].indexOf(text)}`};
+}
+function comboFortune(){
+  const idx = [L.combo.when, L.combo.what, L.combo.kick].map(a=>Math.floor(Math.random() * a.length));
+  return {text: [L.combo.when[idx[0]], L.combo.what[idx[1]], L.combo.kick[idx[2]]].join(' '), ref: `c.${idx.join('-')}`};
+}
+// Обратното: от ref → текст (в езика на получателя). Невалиден ref → null. Премиум категориите не се пращат с линк.
+function fromRef(ref){
+  const m = /^l\.(daily|love|money|fun|motivation)\.(\d+)$/.exec(ref || '');
+  if(m && L[m[1]][+m[2]]) return {text: L[m[1]][+m[2]], tag: m[1] === 'daily' ? T.appName : L.cats[m[1]][0]};
+  const c = /^c\.(\d+)-(\d+)-(\d+)$/.exec(ref || '');
+  if(c && L.combo.when[+c[1]] && L.combo.what[+c[2]] && L.combo.kick[+c[3]]) return {text: [L.combo.when[+c[1]], L.combo.what[+c[2]], L.combo.kick[+c[3]]].join(' '), tag: L.cats.combo[0]};
+  return null;
+}
+// Адресът на приложението за линковете (само когато е качено в интернет)
+const APP_URL = /^https?:$/.test(location.protocol) ? location.origin + location.pathname : '';
 
 // ==== Чашата-талисман ====
 // Форма, цвят и аксесоар. Част са безплатни, част се печелят със серия от дни, част идват с премиум.
@@ -289,11 +318,11 @@ const cupMarkup = (cup, mood, cls, still)=>`<svg viewBox="0 0 100 100" aria-hidd
 function greeting(){ const h = new Date().getHours(); return L.greet[h < 5 ? 3 : h < 11 ? 0 : h < 18 ? 1 : 2]; }
 function dailyFortune(){
   const r = rng(todayISO() + deviceId());
-  const text = pick(L.daily, r), num = 1 + Math.floor(r() * 49), color = pick(L.horo.colors, r);
+  const di = Math.floor(r() * L.daily.length), text = L.daily[di], num = 1 + Math.floor(r() * 49), color = pick(L.horo.colors, r);
   // Три различни символа „в утайката“
   const idx = SYMBOLS.map((_, i)=>i);
   const syms = [0, 1, 2].map(()=>idx.splice(Math.floor(r() * idx.length), 1)[0]);
-  return {text, num, color, syms};
+  return {text, num, color, syms, ref: `l.daily.${di}`};
 }
 function renderHero(justFlipped){
   const revealed = read(K.day, '') === todayISO();
@@ -322,7 +351,7 @@ function renderHero(justFlipped){
     <button class="cupBtn" id="cupTap" type="button" aria-label="${esc(t('myCup'))}">${cupMarkup(myCup(), 'happy', 'bob')}</button>
     ${slip(t('dailyTag', {d: fmt(todayISO())}), f.text, grounds + lucky)}
     <p class="after">${esc(t('comeBack'))}</p>`;
-  bindSlip($('hero'), f.text, t('dailyTag', {d: fmt(todayISO())}));
+  bindSlip($('hero'), f.text, t('dailyTag', {d: fmt(todayISO())}), f.ref);
   $('cupTap').addEventListener('click', openCup);
   if(justFlipped && st.n > 1) toast(`🔥 ${t('streak')}: ${st.n}`);
 }
@@ -339,9 +368,10 @@ function markRevealed(){
 function slip(tag, text, extra){
   const saved = read(K.favs, []).includes(text);
   return `<div class="slip"><div class="tag">${esc(tag)}</div><div class="txt">${esc(text)}</div>${extra || ''}
-    <div class="acts"><button type="button" data-save class="${saved ? 'on' : ''}">${saved ? '❤' : '♡'} ${esc(t(saved ? 'savedOn' : 'save'))}</button><button type="button" data-share>↗ ${esc(t('share'))}</button><button type="button" data-img>🖼 ${esc(t('shareImg'))}</button></div></div>`;
+    <div class="acts"><button type="button" data-save class="${saved ? 'on' : ''}">${saved ? '❤' : '♡'} ${esc(t(saved ? 'savedOn' : 'save'))}</button><button type="button" data-share>↗ ${esc(t('gift'))}</button><button type="button" data-img>🖼 ${esc(t('shareImg'))}</button></div></div>`;
 }
-function bindSlip(root, text, tag){
+// ref (ако има) се слага в линка: приятелят отваря приложението и вижда същото късметче на своя език
+function bindSlip(root, text, tag, ref){
   const save = root.querySelector('[data-save]');
   save.addEventListener('click', ()=>{
     let favs = read(K.favs, []);
@@ -352,10 +382,11 @@ function bindSlip(root, text, tag){
     save.textContent = `${has ? '♡' : '❤'} ${t(has ? 'save' : 'savedOn')}`;
   });
   root.querySelector('[data-share]').addEventListener('click', async ()=>{
+    const url = APP_URL ? APP_URL + (ref ? `?g=${encodeURIComponent(ref)}` : '') : '';
     const msg = `${text}\n\n☕ ${T.appName}`;
     try{
-      if(navigator.share){ await navigator.share({text: msg}); return; }
-      await navigator.clipboard.writeText(msg);
+      if(navigator.share){ await navigator.share(url ? {text: msg, url} : {text: msg}); return; }
+      await navigator.clipboard.writeText(url ? `${msg}\n${url}` : msg);
       toast(t('copied'));
     }catch(e){}
   });
@@ -431,8 +462,14 @@ function renderCats(){
   $('freeCats').innerHTML = CATS.filter(c=>!c.pro).map(card).join('');
   $('proCats').innerHTML = CATS.filter(c=>c.pro).map(card).join('');
   document.querySelectorAll('[data-cat]').forEach(b=>b.addEventListener('click', ()=>openCat(CATS.find(c=>c.id === b.dataset.cat))));
-  $('unlockBtn').style.display = isPremium() ? 'none' : '';
-  $('unlockBtn').textContent = t('unlockAll', {p: T.price});
+  // Картата „Какво отключва Премиум“ — стои под заключените категории, докато не е платено
+  const pro = $('proCard');
+  pro.style.display = isPremium() ? 'none' : '';
+  pro.innerHTML = `<div class="proT">☕ ${esc(t('proTitle'))}</div>
+    <ul>${CATS.filter(c=>c.pro).map(c=>`<li>${c.ico} <b>${esc(L.cats[c.id][0])}</b> — ${esc(L.cats[c.id][1])}</li>`).join('')}<li>☕ <b>${esc(t('unlockExtras'))}</b></li></ul>
+    <div class="proN">${esc(t('proCount', {n: proCount()}))}</div>
+    <button class="main" id="unlockBtn" type="button">${esc(t('unlockAll', {p: T.price}))}</button>`;
+  $('unlockBtn').addEventListener('click', ()=>openUnlock());
 }
 function openSheet(html){ $('sheet').innerHTML = html; $('overlay').style.display = 'flex'; $('sheet').scrollTop = 0; }
 function closeSheet(){ $('overlay').style.display = 'none'; }
@@ -442,7 +479,6 @@ const bindClose = ()=>$('close').addEventListener('click', closeSheet);
 
 function openCat(cat){
   const name = L.cats[cat.id][0];
-  if(cat.pro && !isPremium()){ openUnlock(cat); return; }
   if(cat.adult && !read(K.adult, false)){
     openSheet(`<h3>${cat.ico} ${esc(name)}</h3><p>${esc(t('ask18'))}</p>
       <button class="btn gold" id="yes18" type="button">${esc(t('yes18'))}</button><button class="btn ghost" id="close" type="button">${esc(t('no'))}</button>`);
@@ -450,17 +486,62 @@ function openCat(cat){
     bindClose();
     return;
   }
+  if(cat.pro && !isPremium()){
+    // Безплатна проба: веднъж на ден едно цяло късметче от заключена категория — да се види какво има вътре
+    if(!cat.kind && read(K.taste, '') !== todayISO()){
+      write(K.taste, todayISO());
+      const text = nextFrom(cat.id);
+      openSheet(`<h3>${cat.ico} ${esc(name)}</h3>${slip(`${name} · ${t('freeToday')}`, text)}
+        <button class="btn gold" id="buy2" type="button">${esc(t('unlockAll', {p: T.price}))}</button>${closeBtn()}`);
+      bindSlip($('sheet'), text, name);
+      $('buy2').addEventListener('click', ()=>openUnlock(cat));
+      bindClose();
+      return;
+    }
+    openUnlock(cat);
+    return;
+  }
   if(cat.kind === 'horo'){ openHoro(); return; }
   if(cat.kind === 'oracle'){ openOracle(); return; }
+  if(cat.kind === 'compat'){ openCompat(); return; }
   const show = ()=>{
-    const text = cat.kind === 'combo' ? comboFortune() : nextFrom(cat.id);
-    openSheet(`<h3>${cat.ico} ${esc(name)}</h3>${slip(name, text)}
+    const f = cat.kind === 'combo' ? comboFortune() : (cat.pro ? {text: nextFrom(cat.id)} : nextRef(cat.id));
+    openSheet(`<h3>${cat.ico} ${esc(name)}</h3>${slip(name, f.text)}
       <button class="btn gold" id="more" type="button">${esc(t('another'))}</button>${closeBtn()}`);
-    bindSlip($('sheet'), text, name);
+    bindSlip($('sheet'), f.text, name, f.ref);
     $('more').addEventListener('click', show);
     bindClose();
   };
   show();
+}
+
+// ==== „Кафе за двама“ — съвместимост на две зодии (безплатно; хората го пращат на половинката си) ====
+// Резултатът е винаги един и същ за същата двойка, независимо от реда.
+function compat(a, b){
+  const [x, y] = a <= b ? [a, b] : [b, a];
+  const score = 55 + hash(`pair-${x}-${y}`) % 45;                      // 55–99 %
+  const band = score < 66 ? 0 : score < 79 ? 1 : score < 91 ? 2 : 3;
+  return {score, line: L.compat[band][hash(`line-${x}-${y}`) % L.compat[band].length]};
+}
+function openCompat(){
+  const name = L.cats.compat[0];
+  let a = read(K.sign, null), b = null;
+  const draw = ()=>{
+    const grid = (sel, attr)=>`<div class="signs">${L.signs.map((s, i)=>`<button type="button" ${attr}="${i}" class="${i === sel ? 'on' : ''}"><span>${SIGN_SYM[i]}</span>${esc(s)}</button>`).join('')}</div>`;
+    let out = '', text = '', tag = name;
+    if(a !== null && b !== null){
+      const c = compat(a, b);
+      tag = `${SIGN_SYM[a]} ${L.signs[a]} + ${SIGN_SYM[b]} ${L.signs[b]}`;
+      text = `${t('compatL')}: ${c.score}%\n${c.line}`;
+      out = slip(tag, text);
+    }
+    openSheet(`<h3>💞 ${esc(name)}</h3><p>${esc(t('pickTwo'))}</p>${grid(a, 'data-a')}<div style="text-align:center; font-size:1.4rem; margin:8px 0">+</div>${grid(b, 'data-b')}${out}${closeBtn()}`);
+    $('sheet').querySelectorAll('[data-a]').forEach(x=>x.addEventListener('click', ()=>{ a = +x.dataset.a; draw(); }));
+    $('sheet').querySelectorAll('[data-b]').forEach(x=>x.addEventListener('click', ()=>{ b = +x.dataset.b; draw(); if(a !== null) $('sheet').scrollTop = $('sheet').scrollHeight; }));
+    if(out) bindSlip($('sheet'), text, tag);
+    bindClose();
+  };
+  draw();
 }
 
 // ==== „Попитай чашата“ — задаваш въпрос, разклащаш и чашата отговаря ====
@@ -528,16 +609,37 @@ function openHoro(){
 // ==== Премиум: еднократна покупка през Google Play / App Store ====
 // Тук се връзва плащането, когато приложението влезе в магазините (еднократен продукт „premium“).
 // Дотогава бутонът НЕ отключва нищо — само казва какво има вътре.
+// „Надникване“: началото на едно късметче от заключената категория се чете, краят е размазан
+function teaser(cat){
+  if(!cat) return '';
+  const r = rng(cat.id + todayISO());
+  const full = cat.kind === 'horo' ? horoscope(read(K.sign, null) ?? Math.floor(r() * 12), 'day').text : pick(L[cat.id], r);
+  let cut = full.indexOf(' ', Math.floor(full.length * .42));
+  if(cut < 0) cut = Math.floor(full.length / 2);
+  return `<div class="slip peek"><div class="tag">${esc(L.cats[cat.id][0])}</div><div class="txt">${esc(full.slice(0, cut))}<span class="blur">${esc(full.slice(cut))}</span></div><div class="peekNote">🔒 ${esc(t('teaser'))}</div></div>`;
+}
+function proCount(){ return Math.floor((L.adult.length + L.dark.length + L.spicy.length) / 10) * 10; }
 function openUnlock(cat){
   openSheet(`<h3>${cat ? `${cat.ico} ${esc(L.cats[cat.id][0])}` : `☕ ${esc(T.appName)} ${esc(t('premium'))}`}</h3>
-    <p>${esc(t('unlockText'))}</p>
+    ${teaser(cat)}
+    <p style="margin-top:14px">${esc(t('unlockText'))}</p>
     <div class="chips">${CATS.filter(c=>c.pro).map(c=>`<span class="chip">${c.ico} ${esc(L.cats[c.id][0])}</span>`).join('')}<span class="chip">☕ ${esc(t('unlockExtras'))}</span></div>
     <button class="btn gold" id="buy" type="button">${esc(t('buy', {p: T.price}))}</button>
     <div class="msg" id="buyMsg"></div>${closeBtn()}`);
   $('buy').addEventListener('click', ()=>{ $('buyMsg').textContent = t('soon'); });
   bindClose();
 }
-$('unlockBtn').addEventListener('click', ()=>openUnlock());
+
+// ==== Късметче от приятел: линк ...?g=<ref> показва същото късметче и кани човека да обърне своята чаша ====
+function showGift(){
+  const q = new URLSearchParams(location.search), g = fromRef(q.get('g'));
+  if(!q.has('g')) return;
+  try{ history.replaceState(null, '', location.pathname); }catch(e){}
+  if(!g) return;
+  openSheet(`<h3>🎁 ${esc(t('giftGot'))}</h3>${slip(g.tag, g.text)}<button class="btn gold" id="close" type="button">${esc(t('giftCta'))} ☕</button>`);
+  bindSlip($('sheet'), g.text, g.tag, q.get('g'));
+  bindClose();
+}
 
 // ==== Моята чаша ====
 function openCup(){
@@ -610,7 +712,7 @@ function renderAll(){
   $('foot').textContent = t('footer');
   renderHero(); renderCats();
 }
-setLang(pickLang());
+setLang(pickLang()).then(()=>{ if(!giftShown){ giftShown = true; showGift(); } });
 // Ако приложението стои отворено през нощта — на сутринта показва новия ден
 document.addEventListener('visibilitychange', ()=>{ if(L && document.visibilityState === 'visible' && $('overlay').style.display !== 'flex') renderHero(); });
 if('serviceWorker' in navigator && location.protocol === 'https:'){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }); }
