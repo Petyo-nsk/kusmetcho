@@ -89,7 +89,11 @@ L10N.tr = {
   "weekEmpty": "Fincanı birkaç gün üst üste kapat, haftan burada görünsün.",
   "pairSub": "Bugün için iki kişiye aynı şans notu. Bağlantıyı kahve içtiğin kişiye gönder.",
   "pairBtn": "Bağlantıyla davet et",
-  "pairGot": "İki kişilik şans notu"
+  "pairGot": "İki kişilik şans notu",
+  "shareTo": "Instagram, Facebook veya TikTok’ta paylaş",
+  "download": "Resmi indir",
+  "shareHint": "“Paylaş”a dokun, uygulamayı seç, sonra Hikâye ya da gönderi.",
+  "shareHintPc": "Resmi indir ve telefonundan Hikâye olarak ya da TikTok’a yükle."
  },
  "greet": [
   "Günaydın!",

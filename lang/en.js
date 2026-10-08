@@ -89,7 +89,11 @@ L10N.en = {
   "weekEmpty": "Flip the cup a few days in a row and your week will show up here.",
   "pairSub": "One lucky note for two, for today. Send the link to the person you have coffee with.",
   "pairBtn": "Invite with a link",
-  "pairGot": "A lucky note for two"
+  "pairGot": "A lucky note for two",
+  "shareTo": "Share to Instagram, Facebook or TikTok",
+  "download": "Download the picture",
+  "shareHint": "Tap “Share”, pick the app, then choose Story or post.",
+  "shareHintPc": "Download the picture and upload it as a Story or to TikTok from your phone."
  },
  "greet": [
   "Good morning!",

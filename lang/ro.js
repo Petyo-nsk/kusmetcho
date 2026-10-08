@@ -89,7 +89,11 @@ L10N.ro = {
   "weekEmpty": "Întoarce ceașca câteva zile la rând și aici va apărea săptămâna ta.",
   "pairSub": "Același răvaș pentru doi, pentru azi. Trimite linkul celui cu care îți bei cafeaua.",
   "pairBtn": "Invită cu un link",
-  "pairGot": "Un răvaș pentru doi"
+  "pairGot": "Un răvaș pentru doi",
+  "shareTo": "Distribuie pe Instagram, Facebook sau TikTok",
+  "download": "Descarcă imaginea",
+  "shareHint": "Apasă „Distribuie”, alege aplicația, apoi Story sau postare.",
+  "shareHintPc": "Descarcă imaginea și încarc-o ca Story sau pe TikTok de pe telefon."
  },
  "greet": [
   "Bună dimineața!",

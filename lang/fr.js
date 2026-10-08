@@ -89,7 +89,11 @@ L10N.fr = {
   "weekEmpty": "Retourne la tasse quelques jours de suite et ta semaine apparaîtra ici.",
   "pairSub": "Le même petit mot pour deux, pour aujourd’hui. Envoie le lien à la personne avec qui tu prends ton café.",
   "pairBtn": "Inviter avec un lien",
-  "pairGot": "Un petit mot pour deux"
+  "pairGot": "Un petit mot pour deux",
+  "shareTo": "Partager sur Instagram, Facebook ou TikTok",
+  "download": "Télécharger l’image",
+  "shareHint": "Touche « Partager », choisis l’appli, puis Story ou publication.",
+  "shareHintPc": "Télécharge l’image et publie-la en Story ou sur TikTok depuis ton téléphone."
  },
  "greet": [
   "Bonjour !",

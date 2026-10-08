@@ -89,7 +89,11 @@ L10N.it = {
   "weekEmpty": "Capovolgi la tazzina qualche giorno di fila e qui comparirà la tua settimana.",
   "pairSub": "Lo stesso bigliettino per due, per oggi. Manda il link alla persona con cui prendi il caffè.",
   "pairBtn": "Invita con un link",
-  "pairGot": "Un bigliettino per due"
+  "pairGot": "Un bigliettino per due",
+  "shareTo": "Condividi su Instagram, Facebook o TikTok",
+  "download": "Scarica l’immagine",
+  "shareHint": "Tocca «Condividi», scegli l’app e poi Storia o post.",
+  "shareHintPc": "Scarica l’immagine e caricala come Storia o su TikTok dal telefono."
  },
  "greet": [
   "Buongiorno!",

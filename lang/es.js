@@ -89,7 +89,11 @@ L10N.es = {
   "weekEmpty": "Dale la vuelta a la taza varios días seguidos y aquí aparecerá tu semana.",
   "pairSub": "El mismo mensaje para dos, para hoy. Envía el enlace a la persona con la que tomas café.",
   "pairBtn": "Invitar con un enlace",
-  "pairGot": "Un mensaje de la suerte para dos"
+  "pairGot": "Un mensaje de la suerte para dos",
+  "shareTo": "Compartir en Instagram, Facebook o TikTok",
+  "download": "Descargar la imagen",
+  "shareHint": "Pulsa «Compartir», elige la app y después Historia o publicación.",
+  "shareHintPc": "Descarga la imagen y súbela como Historia o a TikTok desde el móvil."
  },
  "greet": [
   "¡Buenos días!",
