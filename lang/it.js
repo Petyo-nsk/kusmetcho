@@ -3,7 +3,7 @@ L10N.it = {
  "ui": {
   "appName": "Kusmetcho",
   "tagline": "un bigliettino della fortuna con il caffè",
-  "price": "2,99 €",
+  "price": "4,99 €",
   "heroSub": "Bevi un sorso e capovolgi la tazzina — dentro ti aspetta il bigliettino di oggi.",
   "flip": "Capovolgi la tazzina",
   "dailyTag": "Bigliettino del {d}",
@@ -13,7 +13,7 @@ L10N.it = {
   "comeBack": "Domani ne trovi uno nuovo. Porta il caffè.",
   "more": "Altri bigliettini",
   "premium": "Premium",
-  "unlockAll": "Sblocca tutto — {p} una volta sola",
+  "unlockAll": "Sblocca Premium — {p} all’anno",
   "myCup": "La mia tazzina",
   "saved": "Salvati",
   "footer": "Solo per divertimento — bigliettini e oroscopi non sono previsioni né consigli.",
@@ -43,9 +43,8 @@ L10N.it = {
   "weekOf": "Settimana del {d}",
   "todayIs": "Oggi, {d}",
   "weekFocus": "Tema della settimana: {x}.",
-  "unlockText": "Acquisto unico — nessun abbonamento. Sblocca per sempre:",
+  "unlockText": "Premium è un abbonamento — lo disdici quando vuoi dallo store. Sblocca:",
   "unlockExtras": "Temi, altre tazzine, colori e una corona",
-  "buy": "Sblocca a {p}",
   "soon": "L’acquisto funzionerà nell’app da Google Play / App Store — presto.",
   "shapeL": "Forma",
   "colorL": "Colore",
@@ -68,7 +67,29 @@ L10N.it = {
   "giftCta": "Ora capovolgi la tua tazzina",
   "pickTwo": "Scegli due segni e guarda quanto andate d’accordo.",
   "compatL": "Affinità",
-  "themeL": "Tema"
+  "themeL": "Tema",
+  "priceMonth": "0,89 €",
+  "planYear": "Annuale — {p} all’anno",
+  "planMonth": "Mensile — {p} al mese",
+  "bestDeal": "il più conveniente: meno di 0,42 € al mese",
+  "listen": "Ascolta",
+  "remindBtn": "Promemoria",
+  "remindT": "Promemoria del caffè",
+  "remindSub": "Ogni giorno, all’ora che scegli, la tazzina ti chiama per capovolgerla.",
+  "remindOn": "Attiva il promemoria",
+  "remindOff": "Disattiva",
+  "remindSaved": "Te lo ricordo alle {t}",
+  "remindNative": "Il promemoria funziona del tutto nell’app per telefono. Nel browser arriva solo se la pagina è aperta.",
+  "notifTitle": "Il caffè si raffredda ☕",
+  "notifBody": "Capovolgi la tazzina — il bigliettino di oggi ti aspetta.",
+  "weekT": "La mia settimana",
+  "weekDays": "Giorni con bigliettino",
+  "weekSymbol": "Simbolo più frequente",
+  "weekNums": "Numeri fortunati",
+  "weekEmpty": "Capovolgi la tazzina qualche giorno di fila e qui comparirà la tua settimana.",
+  "pairSub": "Lo stesso bigliettino per due, per oggi. Manda il link alla persona con cui prendi il caffè.",
+  "pairBtn": "Invita con un link",
+  "pairGot": "Un bigliettino per due"
  },
  "greet": [
   "Buongiorno!",
@@ -120,6 +141,14 @@ L10N.it = {
   "compat": [
    "Caffè per due",
    "Quanto vanno d’accordo due segni"
+  ],
+  "work": [
+   "Per i colleghi",
+   "Umorismo da ufficio"
+  ],
+  "drive": [
+   "Per chi guida",
+   "Umorismo su quattro ruote"
   ]
  },
  "shapes": [
@@ -712,5 +741,37 @@ L10N.it = {
   "Cappuccino",
   "Mezzanotte",
   "Matcha"
+ ],
+ "holidays": {
+  "01-01": "Anno nuovo, tazzina nuova. Quello che desideri al primo caffè ha un anno intero per avverarsi.",
+  "02-14": "Oggi l’amore si beve in due tazzine. Se la seconda è vuota — guardati intorno, qualcuno sta arrivando.",
+  "03-08": "Oggi i fiori sono per te. Anche il caffè — e che lo prepari qualcun altro.",
+  "12-24": "Stasera i desideri si sentono meglio. Sussurrane uno sopra la tazzina.",
+  "12-25": "Buon Natale! Oggi la fortuna è sotto l’albero e il caffè sa di cannella.",
+  "12-31": "L’ultimo caffè dell’anno. Bevilo piano — il prossimo comincia con fortuna."
+ },
+ "work": [
+  "Questa riunione poteva essere una mail. La mail poteva essere silenzio.",
+  "Lavoro in squadra. Io lavoro, la squadra guarda.",
+  "«È urgente» vuol dire che qualcuno se n’è ricordato all’ultimo.",
+  "Adoro le scadenze. Soprattutto il fruscio che fanno quando mi passano accanto.",
+  "Il mio ufficio ha la porta sempre aperta. Per scappare più in fretta.",
+  "Venerdì pomeriggio: i cinque minuti più produttivi della settimana.",
+  "Non arrivo tardi al lavoro. È lui che comincia troppo presto.",
+  "Il capo mi ha detto di pensare fuori dagli schemi. Sto pensando alle ferie.",
+  "Sul curriculum c’è scritto «lavoro bene sotto pressione». Nessuno chiede quanto mi costa.",
+  "Riunione del lunedì: ci siamo tutti, fisicamente."
+ ],
+ "drive": [
+  "La freccia non è una decorazione. Ma nemmeno una promessa.",
+  "Il navigatore ha detto «girate a destra». L’ha detto alla persona sbagliata.",
+  "Ho parcheggiato alla perfezione. Non mi ha visto nessuno. Non vale.",
+  "La mia auto ha due modalità: «serbatoio vuoto» e «ho appena fatto il pieno».",
+  "L’ingorgo è l’unico posto dove siamo tutti uguali.",
+  "Non guido veloce. Volo basso.",
+  "Cambio le gomme due volte l’anno. I buoni propositi, più spesso.",
+  "I tergicristalli partono esattamente quando smette di piovere.",
+  "La strada più corta è quella che il navigatore non conosce.",
+  "L’auto non è sporca. Ha uno strato protettivo."
  ]
 };

@@ -3,7 +3,7 @@ L10N.ro = {
  "ui": {
   "appName": "Kusmetcho",
   "tagline": "un răvaș lângă cafea",
-  "price": "2,99 €",
+  "price": "4,99 €",
   "heroSub": "Ia o gură și întoarce ceașca — înăuntru te așteaptă răvașul de azi.",
   "flip": "Întoarce ceașca",
   "dailyTag": "Răvașul pentru {d}",
@@ -13,7 +13,7 @@ L10N.ro = {
   "comeBack": "Mâine te așteaptă unul nou. Vino cu cafeaua.",
   "more": "Mai multe răvașe",
   "premium": "Premium",
-  "unlockAll": "Deblochează tot — {p} o singură dată",
+  "unlockAll": "Deblochează Premium — {p} pe an",
   "myCup": "Ceașca mea",
   "saved": "Salvate",
   "footer": "Doar pentru distracție — răvașele și horoscoapele nu sunt predicții sau sfaturi.",
@@ -43,9 +43,8 @@ L10N.ro = {
   "weekOf": "Săptămâna din {d}",
   "todayIs": "Azi, {d}",
   "weekFocus": "Tema săptămânii: {x}.",
-  "unlockText": "O singură plată — fără abonament. Deblochează pentru totdeauna:",
+  "unlockText": "Premium este un abonament — îl oprești oricând din magazin. Deblochează:",
   "unlockExtras": "Teme, mai multe cești, culori și o coroană",
-  "buy": "Deblochează cu {p}",
   "soon": "Plata va funcționa în aplicația din Google Play / App Store — în curând.",
   "shapeL": "Formă",
   "colorL": "Culoare",
@@ -68,7 +67,29 @@ L10N.ro = {
   "giftCta": "Acum întoarce-ți ceașca",
   "pickTwo": "Alege două zodii și vezi cât de bine vă potriviți.",
   "compatL": "Compatibilitate",
-  "themeL": "Temă"
+  "themeL": "Temă",
+  "priceMonth": "0,89 €",
+  "planYear": "Anual — {p} pe an",
+  "planMonth": "Lunar — {p} pe lună",
+  "bestDeal": "cel mai avantajos: sub 0,42 € pe lună",
+  "listen": "Ascultă",
+  "remindBtn": "Memento",
+  "remindT": "Memento pentru cafea",
+  "remindSub": "În fiecare zi, la ora aleasă, ceașca te cheamă s-o întorci.",
+  "remindOn": "Pornește mementoul",
+  "remindOff": "Oprește",
+  "remindSaved": "Îți amintesc la {t}",
+  "remindNative": "Mementoul merge complet în aplicația de telefon. În browser apare doar dacă pagina e deschisă.",
+  "notifTitle": "Ți se răcește cafeaua ☕",
+  "notifBody": "Întoarce ceașca — răvașul de azi te așteaptă.",
+  "weekT": "Săptămâna mea",
+  "weekDays": "Zile cu răvaș",
+  "weekSymbol": "Cel mai des simbol",
+  "weekNums": "Numere norocoase",
+  "weekEmpty": "Întoarce ceașca câteva zile la rând și aici va apărea săptămâna ta.",
+  "pairSub": "Același răvaș pentru doi, pentru azi. Trimite linkul celui cu care îți bei cafeaua.",
+  "pairBtn": "Invită cu un link",
+  "pairGot": "Un răvaș pentru doi"
  },
  "greet": [
   "Bună dimineața!",
@@ -120,6 +141,14 @@ L10N.ro = {
   "compat": [
    "Cafea în doi",
    "Cât de bine se potrivesc două zodii"
+  ],
+  "work": [
+   "Pentru colegi",
+   "Umor de birou"
+  ],
+  "drive": [
+   "Pentru șoferi",
+   "Umor pe patru roți"
   ]
  },
  "shapes": [
@@ -712,5 +741,37 @@ L10N.ro = {
   "Cappuccino",
   "Miezul nopții",
   "Matcha"
+ ],
+ "holidays": {
+  "01-01": "An nou, ceașcă nouă. Orice îți dorești la prima cafea are un an întreg să se împlinească.",
+  "02-14": "Azi dragostea se bea din două cești. Dacă a doua e goală — uită-te în jur, vine cineva.",
+  "03-08": "Azi florile sunt pentru tine. Și cafeaua — și s-o facă altcineva.",
+  "12-24": "În seara asta dorințele se aud mai bine. Șoptește una deasupra ceștii.",
+  "12-25": "Crăciun fericit! Azi norocul e sub brad, iar cafeaua e cu scorțișoară.",
+  "12-31": "Ultima cafea a anului. Bea-o încet — următoarea începe cu noroc."
+ },
+ "work": [
+  "Ședința asta putea fi un e-mail. E-mailul putea fi liniște.",
+  "Lucrez în echipă. Eu lucrez, echipa se uită.",
+  "„E urgent” înseamnă că cineva și-a amintit în ultima clipă.",
+  "Iubesc termenele-limită. Mai ales șuieratul cu care trec pe lângă mine.",
+  "Biroul meu are ușa deschisă. Ca să fug mai repede.",
+  "Vineri după-amiază: cele mai productive cinci minute din săptămână.",
+  "Nu întârzii la serviciu. Începe el prea devreme.",
+  "Șeful mi-a zis să gândesc altfel. Mă gândesc la concediu.",
+  "În CV scrie „lucrez bine sub presiune”. Nimeni nu întreabă cât mă costă.",
+  "Ședința de luni: suntem toți aici, cu trupul."
+ ],
+ "drive": [
+  "Semnalizarea nu e decor. Dar nici promisiune.",
+  "GPS-ul a zis „virați la dreapta”. I-a zis cui nu trebuia.",
+  "Am parcat perfect. N-a văzut nimeni. Nu se pune.",
+  "Mașina mea are două moduri: „rezervor gol” și „abia am alimentat”.",
+  "Ambuteiajul e singurul loc unde suntem toți egali.",
+  "Nu conduc repede. Zbor jos.",
+  "Schimb anvelopele de două ori pe an. Promisiunile, mai des.",
+  "Ștergătoarele pornesc exact când se oprește ploaia.",
+  "Cel mai scurt drum e cel pe care GPS-ul nu-l știe.",
+  "Mașina nu e murdară. Are strat protector."
  ]
 };

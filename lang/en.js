@@ -3,7 +3,7 @@ L10N.en = {
  "ui": {
   "appName": "Kusmetcho",
   "tagline": "a lucky note with your coffee",
-  "price": "€2.99",
+  "price": "€4.99",
   "heroSub": "Take a sip and flip the cup — today’s lucky note is waiting inside.",
   "flip": "Flip the cup",
   "dailyTag": "Lucky note for {d}",
@@ -13,7 +13,7 @@ L10N.en = {
   "comeBack": "A new one is waiting tomorrow. Bring coffee.",
   "more": "More lucky notes",
   "premium": "Premium",
-  "unlockAll": "Unlock everything — {p} once",
+  "unlockAll": "Unlock Premium — {p} a year",
   "myCup": "My cup",
   "saved": "Saved",
   "footer": "Just for fun — lucky notes and horoscopes are not predictions or advice.",
@@ -43,9 +43,8 @@ L10N.en = {
   "weekOf": "Week of {d}",
   "todayIs": "Today, {d}",
   "weekFocus": "Theme of the week: {x}.",
-  "unlockText": "One-time purchase — no subscription. Unlocks forever:",
+  "unlockText": "Premium is a subscription — cancel any time in the store. It unlocks:",
   "unlockExtras": "Themes, more cups, colours and a crown",
-  "buy": "Unlock for {p}",
   "soon": "Purchases will work in the app from Google Play / the App Store — coming soon.",
   "shapeL": "Shape",
   "colorL": "Colour",
@@ -68,7 +67,29 @@ L10N.en = {
   "giftCta": "Now flip your own cup",
   "pickTwo": "Pick two signs and see how well you go together.",
   "compatL": "Match",
-  "themeL": "Theme"
+  "themeL": "Theme",
+  "priceMonth": "€0.89",
+  "planYear": "Yearly — {p} a year",
+  "planMonth": "Monthly — {p} a month",
+  "bestDeal": "best value: under €0.42 a month",
+  "listen": "Listen",
+  "remindBtn": "Reminder",
+  "remindT": "Coffee reminder",
+  "remindSub": "Every day at the time you pick, the cup will call you to flip it.",
+  "remindOn": "Turn the reminder on",
+  "remindOff": "Turn off",
+  "remindSaved": "I’ll remind you at {t}",
+  "remindNative": "The reminder works fully in the phone app. In the browser it only shows while the page is open.",
+  "notifTitle": "Your coffee is getting cold ☕",
+  "notifBody": "Flip the cup — today’s lucky note is waiting.",
+  "weekT": "My week",
+  "weekDays": "Days with a lucky note",
+  "weekSymbol": "Most frequent symbol",
+  "weekNums": "Lucky numbers",
+  "weekEmpty": "Flip the cup a few days in a row and your week will show up here.",
+  "pairSub": "One lucky note for two, for today. Send the link to the person you have coffee with.",
+  "pairBtn": "Invite with a link",
+  "pairGot": "A lucky note for two"
  },
  "greet": [
   "Good morning!",
@@ -120,6 +141,14 @@ L10N.en = {
   "compat": [
    "Coffee for two",
    "How well two signs match"
+  ],
+  "work": [
+   "For colleagues",
+   "Office humour"
+  ],
+  "drive": [
+   "For drivers",
+   "Humour on four wheels"
   ]
  },
  "shapes": [
@@ -712,5 +741,37 @@ L10N.en = {
   "Cappuccino",
   "Midnight",
   "Matcha"
+ ],
+ "holidays": {
+  "01-01": "New year, new cup. Whatever you wish for over the first coffee has a whole year to come true.",
+  "02-14": "Today love is served in two cups. If the second one is empty — look around, someone is coming.",
+  "03-08": "Today the flowers are for you. So is the coffee — and someone else should make it.",
+  "12-24": "Tonight every wish is heard a little better. Whisper one over the cup.",
+  "12-25": "Merry Christmas! Today the luck is under the tree and the coffee comes with cinnamon.",
+  "12-31": "The last coffee of the year. Drink it slowly — the next one starts lucky."
+ },
+ "work": [
+  "That meeting could have been an email. The email could have been silence.",
+  "I work in a team. I work, the team watches.",
+  "“It’s urgent” means someone remembered at the last minute.",
+  "I love deadlines. Especially the whooshing sound they make as they fly by.",
+  "My office has an open-door policy. So I can escape faster.",
+  "Friday afternoon: the most productive five minutes of the week.",
+  "I’m not late for work. It starts too early.",
+  "My boss told me to think outside the box. I’m thinking about my holiday.",
+  "My CV says “works well under pressure”. Nobody asks what it costs me.",
+  "Monday stand-up: we are all here, physically."
+ ],
+ "drive": [
+  "The indicator is not decoration. It is not a promise either.",
+  "The sat nav said “turn right”. It said it to the wrong person.",
+  "I parked perfectly. Nobody saw. It doesn’t count.",
+  "My car has two modes: “empty tank” and “I just filled up”.",
+  "A traffic jam is the only place where we are all equal.",
+  "I don’t drive fast. I fly low.",
+  "I change my tyres twice a year. My resolutions, more often.",
+  "The wipers kick in exactly when the rain stops.",
+  "The shortest route is the one the sat nav doesn’t know.",
+  "The car isn’t dirty. It has a protective layer."
  ]
 };

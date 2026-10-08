@@ -110,8 +110,10 @@ h2{font:700 .78rem/1 var(--disp); letter-spacing:.14em; text-transform:uppercase
 .slip.peek{animation:none;}
 .slip .blur{filter:blur(6px); user-select:none; -webkit-user-select:none;}
 .slip .peekNote{font-size:.82rem; font-weight:700; color:var(--tagc); border-top:1px dashed var(--dash); padding-top:10px;}
-.row{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px;}
-.row button{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:13px 8px; font-weight:700; font-size:.9rem;}
+.row{display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:22px;}
+.row button{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:13px 4px; font-weight:700; font-size:.8rem; line-height:1.3;}
+.acts button.say{flex:0 0 42px;}
+.btn.plan small{display:block; font:600 .72rem/1.3 system-ui,sans-serif; opacity:.8; margin-top:3px;}
 footer{margin-top:26px; text-align:center; color:var(--muted); font-size:.72rem; line-height:1.6;}
 footer a{color:var(--muted);}
 
@@ -162,7 +164,7 @@ footer a{color:var(--muted);}
   <h2 id="hPro"></h2>
   <div class="cats" id="proCats"></div>
   <div class="proCard" id="proCard"></div>
-  <div class="row"><button type="button" id="cupBtn2"></button><button type="button" id="favBtn"></button></div>
+  <div class="row"><button type="button" id="cupBtn2"></button><button type="button" id="favBtn"></button><button type="button" id="remindBtn"></button></div>
   <footer><span id="foot"></span><br>© 2026 PARKBOOK · <a href="mailto:support@parkbook.bg">support@parkbook.bg</a></footer>
 </div>
 <div class="overlay" id="overlay"><div class="sheet" id="sheet"></div></div>
@@ -174,7 +176,7 @@ window.L10N = {};
 const LANGS = [['bg','Български'],['en','English'],['ru','Русский'],['ro','Română'],['el','Ελληνικά'],['it','Italiano'],['es','Español'],['fr','Français'],['tr','Türkçe']];
 const K = {day:'kusmetcho-day-v1', streak:'kusmetcho-streak-v1', premium:'kusmetcho-premium-v1', cup:'kusmetcho-cup-v1', favs:'kusmetcho-favs-v1',
            bags:'kusmetcho-bags-v1', device:'kusmetcho-device-v1', sign:'kusmetcho-sign-v1', adult:'kusmetcho-18-v1', lang:'kusmetcho-lang-v1',
-           taste:'kusmetcho-taste-v1', theme:'kusmetcho-theme-v1'};
+           taste:'kusmetcho-taste-v1', theme:'kusmetcho-theme-v1', hist:'kusmetcho-hist-v1', remind:'kusmetcho-remind-v1'};
 const read = (k, f)=>{ try{ const v = JSON.parse(localStorage.getItem(k)); return v ?? f; }catch(e){ return f; } };
 const write = (k, v)=>{ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} };
 const esc = s=>String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -238,6 +240,8 @@ const CATS = [
   {id:'adult',      ico:'😏', pro:true, adult:true},
   {id:'dark',       ico:'💀', pro:true},
   {id:'spicy',      ico:'🌶️', pro:true, adult:true},
+  {id:'work',       ico:'💼', pro:true},
+  {id:'drive',      ico:'🚗', pro:true},
   {id:'horo',       ico:'✨', pro:true, kind:'horo'}
 ];
 // Символите „в утайката“ — имената и значенията са в езиковите пакети, в същия ред
@@ -270,6 +274,8 @@ function comboFortune(){
 function fromRef(ref){
   const m = /^l\.(daily|love|money|fun|motivation)\.(\d+)$/.exec(ref || '');
   if(m && L[m[1]][+m[2]]) return {text: L[m[1]][+m[2]], tag: m[1] === 'daily' ? T.appName : L.cats[m[1]][0]};
+  const hd = /^h\.(\d\d-\d\d)$/.exec(ref || '');
+  if(hd && L.holidays[hd[1]]) return {text: L.holidays[hd[1]], tag: T.appName};
   const c = /^c\.(\d+)-(\d+)-(\d+)$/.exec(ref || '');
   if(c && L.combo.when[+c[1]] && L.combo.what[+c[2]] && L.combo.kick[+c[3]]) return {text: [L.combo.when[+c[1]], L.combo.what[+c[2]], L.combo.kick[+c[3]]].join(' '), tag: L.cats.combo[0]};
   return null;
@@ -348,11 +354,13 @@ const cupMarkup = (cup, mood, cls, still)=>`<svg viewBox="0 0 100 100" aria-hidd
 function greeting(){ const h = new Date().getHours(); return L.greet[h < 5 ? 3 : h < 11 ? 0 : h < 18 ? 1 : 2]; }
 function dailyFortune(){
   const r = rng(todayISO() + deviceId());
-  const di = Math.floor(r() * L.daily.length), text = L.daily[di], num = 1 + Math.floor(r() * 49), color = pick(L.horo.colors, r);
+  const di = Math.floor(r() * L.daily.length), num = 1 + Math.floor(r() * 49), color = pick(L.horo.colors, r);
+  // На празник (Нова година, Свети Валентин, 8 март, Коледа…) късметчето е празнично — за всички едно и също
+  const hol = todayISO().slice(5), text = L.holidays[hol] || L.daily[di];
   // Три различни символа „в утайката“
   const idx = SYMBOLS.map((_, i)=>i);
   const syms = [0, 1, 2].map(()=>idx.splice(Math.floor(r() * idx.length), 1)[0]);
-  return {text, num, color, syms, ref: `l.daily.${di}`};
+  return {text, num, color, syms, ref: L.holidays[hol] ? `h.${hol}` : `l.daily.${di}`};
 }
 function renderHero(justFlipped){
   const revealed = read(K.day, '') === todayISO();
@@ -392,13 +400,28 @@ function markRevealed(){
   const n = st.last === addDaysISO(day, -1) ? st.n + 1 : 1;
   write(K.streak, {n, last: day, best: Math.max(st.best || 0, n)});
   write(K.day, day);
+  // Дневник за „Моята седмица“: символите и числото от всеки ден (пазим последните 60 дни)
+  const f = dailyFortune(), hist = read(K.hist, {});
+  hist[day] = {s: f.syms, n: f.num};
+  Object.keys(hist).sort().slice(0, -60).forEach(k=>delete hist[k]);
+  write(K.hist, hist);
 }
 
 // Хартийката с късметче + бутоните „Запази“, „Сподели“ и „Картинка“
 function slip(tag, text, extra){
   const saved = read(K.favs, []).includes(text);
   return `<div class="slip"><div class="tag">${esc(tag)}</div><div class="txt">${esc(text)}</div>${extra || ''}
-    <div class="acts"><button type="button" data-save class="${saved ? 'on' : ''}">${saved ? '❤' : '♡'} ${esc(t(saved ? 'savedOn' : 'save'))}</button><button type="button" data-share>↗ ${esc(t('gift'))}</button><button type="button" data-img>🖼 ${esc(t('shareImg'))}</button></div></div>`;
+    <div class="acts"><button type="button" data-save class="${saved ? 'on' : ''}">${saved ? '❤' : '♡'} ${esc(t(saved ? 'savedOn' : 'save'))}</button><button type="button" data-share>↗ ${esc(t('gift'))}</button><button type="button" data-img>📸 Story</button>${'speechSynthesis' in window ? `<button type="button" data-say class="say" aria-label="${esc(t('listen'))}">🔊</button>` : ''}</div></div>`;
+}
+// Чашата „казва“ късметчето на глас — с гласа на телефона за избрания език
+const VOICE = {bg:'bg-BG', en:'en-GB', ru:'ru-RU', ro:'ro-RO', el:'el-GR', it:'it-IT', es:'es-ES', fr:'fr-FR', tr:'tr-TR'};
+function say(text){
+  try{
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text.replace(/[—„“«»]/g, ' '));
+    u.lang = VOICE[LANG] || 'en-GB'; u.rate = .95;
+    speechSynthesis.speak(u);
+  }catch(e){}
 }
 // ref (ако има) се слага в линка: приятелят отваря приложението и вижда същото късметче на своя език
 function bindSlip(root, text, tag, ref){
@@ -421,25 +444,28 @@ function bindSlip(root, text, tag, ref){
     }catch(e){}
   });
   root.querySelector('[data-img]').addEventListener('click', ()=>shareImage(text, tag));
+  const sayBtn = root.querySelector('[data-say]');
+  if(sayBtn) sayBtn.addEventListener('click', ()=>say(text));
 }
 
-// ==== Картинка за споделяне (1080×1350 — става за Instagram, Facebook, Viber) ====
+// ==== Картинка за Story (1080×1920 — Instagram Story, Facebook Story, WhatsApp/Viber статус) ====
 // Чашата на човека + хартийката с текста + името на приложението. Всяко споделяне е безплатна реклама.
+// На телефон излиза менюто „Сподели“ → Instagram / Facebook → Story; на компютър картинката се сваля.
 async function shareImage(text, tag){
   try{
     if(document.fonts && document.fonts.ready) await document.fonts.ready;
-    const W = 1080, H = 1350, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    const W = 1080, H = 1920, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
     const x = cv.getContext('2d');
     // цветовете и шрифтът идват от избраната тема
     const cs = getComputedStyle(document.documentElement), v = n=>cs.getPropertyValue(n).trim();
     const FONT = v('--disp') || 'Comfortaa, system-ui, sans-serif';
-    const g = x.createRadialGradient(W/2, 0, 60, W/2, 300, 1100); g.addColorStop(0, v('--glow')); g.addColorStop(1, v('--bg'));
+    const g = x.createRadialGradient(W/2, 120, 60, W/2, 520, 1300); g.addColorStop(0, v('--glow')); g.addColorStop(1, v('--bg'));
     x.fillStyle = g; x.fillRect(0, 0, W, H);
     // чашата
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 100 100">${cupSvg(myCup(), 'happy', true)}</svg>`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 100 100">${cupSvg(myCup(), 'happy', true)}</svg>`;
     const img = new Image();
     await new Promise((ok, no)=>{ img.onload = ok; img.onerror = no; img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); });
-    x.drawImage(img, (W - 420)/2, 70, 420, 420);
+    x.drawImage(img, (W - 520)/2, 300, 520, 520);   // отгоре остава място за името на профила в Story
     // текстът — пренасяне по думи, шрифтът се смалява, ако е дълъг
     const boxW = 860, pad = 70;
     let size = 62, lines = [];
@@ -454,8 +480,8 @@ async function shareImage(text, tag){
         lines.push(line);
       }
     };
-    wrap(); while(lines.length * size * 1.38 > 520 && size > 34){ size -= 4; wrap(); }
-    const lh = size * 1.38, boxH = lines.length * lh + pad*2 + 50, bx = (W - boxW)/2, by = 500;
+    wrap(); while(lines.length * size * 1.38 > 560 && size > 34){ size -= 4; wrap(); }
+    const lh = size * 1.38, boxH = lines.length * lh + pad*2 + 50, bx = (W - boxW)/2, by = 860;
     // хартийката с назъбени краища
     x.fillStyle = v('--paper'); x.beginPath();
     const z = 22, n = Math.round(boxW / (z*2));
@@ -471,9 +497,9 @@ async function shareImage(text, tag){
     lines.forEach((l, i)=>x.fillText(l, bx + pad, by + pad + 40 + i * lh));
     // подписът
     x.textAlign = 'center'; x.fillStyle = v('--crema'); x.font = `700 54px ${FONT}`;
-    x.fillText(`☕ ${T.appName}`, W/2, H - 150);
+    x.fillText(`☕ ${T.appName}`, W/2, H - 330);
     x.fillStyle = v('--muted'); x.font = '600 30px system-ui, sans-serif';
-    x.fillText(T.tagline, W/2, H - 80);
+    x.fillText(T.tagline, W/2, H - 258);            // долу остава място за полето „Изпрати съобщение“
     const blob = await new Promise(ok=>cv.toBlob(ok, 'image/png'));
     const file = new File([blob], 'kusmetcho.png', {type:'image/png'});
     if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file], text: `☕ ${T.appName}`}); return; }
@@ -568,7 +594,9 @@ function openCompat(){
       text = `${t('compatL')}: ${c.score}%\n${c.line}`;
       out = slip(tag, text);
     }
-    openSheet(`<h3>💞 ${esc(name)}</h3><p>${esc(t('pickTwo'))}</p>${grid(a, 'data-a')}<div style="text-align:center; font-size:1.4rem; margin:8px 0">+</div>${grid(b, 'data-b')}${out}${closeBtn()}`);
+    openSheet(`<h3>💞 ${esc(name)}</h3><p>${esc(t('pickTwo'))}</p>${grid(a, 'data-a')}<div style="text-align:center; font-size:1.4rem; margin:8px 0">+</div>${grid(b, 'data-b')}${out}
+      <button class="btn ghost" id="pairOpen" type="button">👥 ${esc(t('pairGot'))}</button>${closeBtn()}`);
+    $('pairOpen').addEventListener('click', ()=>openPair(Math.random().toString(36).slice(2, 8)));
     $('sheet').querySelectorAll('[data-a]').forEach(x=>x.addEventListener('click', ()=>{ a = +x.dataset.a; draw(); }));
     $('sheet').querySelectorAll('[data-b]').forEach(x=>x.addEventListener('click', ()=>{ b = +x.dataset.b; draw(); if(a !== null) $('sheet').scrollTop = $('sheet').scrollHeight; }));
     if(out) bindSlip($('sheet'), text, tag);
@@ -651,21 +679,108 @@ function teaser(cat){
   if(cut < 0) cut = Math.floor(full.length / 2);
   return `<div class="slip peek"><div class="tag">${esc(L.cats[cat.id][0])}</div><div class="txt">${esc(full.slice(0, cut))}<span class="blur">${esc(full.slice(cut))}</span></div><div class="peekNote">🔒 ${esc(t('teaser'))}</div></div>`;
 }
-function proCount(){ return Math.floor((L.adult.length + L.dark.length + L.spicy.length) / 10) * 10; }
+function proCount(){ return Math.floor(CATS.filter(c=>c.pro && !c.kind).reduce((s, c)=>s + L[c.id].length, 0) / 10) * 10; }
+// Премиум е абонамент (решение на Петьо, 08.10.2026): 4,99 €/година или 0,89 €/месец. Цените тук са резервни —
+// в приложението за телефон ще се показва цената от магазина. Продукти: premium_yearly и premium_monthly.
 function openUnlock(cat){
   openSheet(`<h3>${cat ? `${cat.ico} ${esc(L.cats[cat.id][0])}` : `☕ ${esc(T.appName)} ${esc(t('premium'))}`}</h3>
     ${teaser(cat)}
     <p style="margin-top:14px">${esc(t('unlockText'))}</p>
     <div class="chips">${CATS.filter(c=>c.pro).map(c=>`<span class="chip">${c.ico} ${esc(L.cats[c.id][0])}</span>`).join('')}<span class="chip">☕ ${esc(t('unlockExtras'))}</span></div>
-    <button class="btn gold" id="buy" type="button">${esc(t('buy', {p: T.price}))}</button>
+    <button class="btn gold plan" data-plan="premium_yearly" type="button">${esc(t('planYear', {p: T.price}))}<small>${esc(t('bestDeal'))}</small></button>
+    <button class="btn ghost plan" data-plan="premium_monthly" type="button">${esc(t('planMonth', {p: T.priceMonth}))}</button>
     <div class="msg" id="buyMsg"></div>${closeBtn()}`);
-  $('buy').addEventListener('click', ()=>{ $('buyMsg').textContent = t('soon'); });
+  $('sheet').querySelectorAll('[data-plan]').forEach(b=>b.addEventListener('click', ()=>{ $('buyMsg').textContent = t('soon'); }));
+  bindClose();
+}
+
+// ==== Напомняне за кафето: всеки ден в избран час ====
+// В приложението за телефон (Capacitor) — истинско известие и при затворено приложение.
+// В браузъра няма как да се насрочи известие — показваме го само ако страницата е отворена в този час.
+let remindTimer = null;
+function nativeNotif(){ const C = window.Capacitor; return C && C.isNativePlatform && C.isNativePlatform() && C.Plugins && C.Plugins.LocalNotifications; }
+async function scheduleReminder(){
+  const r = read(K.remind, {on:false, time:'08:00'});
+  const [h, m] = r.time.split(':').map(Number);
+  clearTimeout(remindTimer);
+  const N = nativeNotif();
+  if(N){
+    try{
+      await N.cancel({notifications:[{id:1}]});
+      if(!r.on) return true;
+      const perm = await N.requestPermissions();
+      if(perm.display !== 'granted') return false;
+      await N.schedule({notifications:[{id:1, title:t('notifTitle'), body:t('notifBody'), schedule:{on:{hour:h, minute:m}, allowWhileIdle:true}}]});
+      return true;
+    }catch(e){ return false; }
+  }
+  if(!r.on || !('Notification' in window)) return false;
+  if(Notification.permission === 'default'){ try{ await Notification.requestPermission(); }catch(e){} }
+  if(Notification.permission !== 'granted') return false;
+  const at = new Date(); at.setHours(h, m, 0, 0); if(at <= new Date()) at.setDate(at.getDate() + 1);
+  remindTimer = setTimeout(()=>{ try{ new Notification(t('notifTitle'), {body:t('notifBody'), icon:'icons/icon-192.png'}); }catch(e){} scheduleReminder(); }, Math.min(at - new Date(), 2e9));
+  return true;
+}
+function openRemind(){
+  const r = read(K.remind, {on:false, time:'08:00'});
+  openSheet(`<h3>🔔 ${esc(t('remindT'))}</h3><p>${esc(t('remindSub'))}</p>
+    <input class="ask" id="rTime" type="time" value="${esc(r.time)}">
+    <div class="msg" id="rMsg" style="color:var(--muted)">${nativeNotif() ? '' : esc(t('remindNative'))}</div>
+    <button class="btn gold" id="rOn" type="button">${esc(t('remindOn'))}</button>
+    ${r.on ? `<button class="btn ghost" id="rOff" type="button">${esc(t('remindOff'))}</button>` : ''}${closeBtn()}`);
+  $('rOn').addEventListener('click', async ()=>{
+    const time = $('rTime').value || '08:00';
+    write(K.remind, {on:true, time});
+    await scheduleReminder();
+    closeSheet(); renderAll(); toast(`🔔 ${t('remindSaved', {t: time})}`);
+  });
+  if(r.on) $('rOff').addEventListener('click', async ()=>{ write(K.remind, {on:false, time:r.time}); await scheduleReminder(); closeSheet(); renderAll(); });
+  bindClose();
+}
+
+// ==== „Моята седмица“ — обобщение за споделяне: дни с късметче, най-чест символ, щастливи числа ====
+function openWeek(){
+  const hist = read(K.hist, {}), st = streak();
+  const days = [0, 1, 2, 3, 4, 5, 6].map(i=>addDaysISO(todayISO(), -i)).filter(d=>hist[d]);
+  let body = `<p>${esc(t('weekEmpty'))}</p>`, text = '';
+  if(days.length){
+    const cnt = {}; days.forEach(d=>hist[d].s.forEach(i=>{ cnt[i] = (cnt[i] || 0) + 1; }));
+    const top = +Object.keys(cnt).sort((a, b)=>cnt[b] - cnt[a] || a - b)[0];
+    text = `🔥 ${t('streak')}: ${st.n} · ${t('best')}: ${st.best || st.n}\n☕ ${t('weekDays')}: ${days.length}/7\n${SYMBOLS[top]} ${t('weekSymbol')}: ${L.symbols[top][0]} — ${L.symbols[top][1]}\n🍀 ${t('weekNums')}: ${days.map(d=>hist[d].n).reverse().join(', ')}`;
+    body = slip(t('weekT'), text);
+  }
+  openSheet(`<h3>📅 ${esc(t('weekT'))}</h3>${body}${closeBtn()}`);
+  if(text) bindSlip($('sheet'), text, t('weekT'));
+  bindClose();
+}
+
+// ==== Общо късметче за двама: линк ...?p=<код> — двамата виждат едно и също късметче за деня, всеки на своя език ====
+function pairFortune(code){
+  const r = rng('pair' + code + todayISO());
+  return [L.combo.when, L.combo.what, L.combo.kick].map(a=>a[Math.floor(r() * a.length)]).join(' ');
+}
+function openPair(code, invited){
+  const text = pairFortune(code), tag = t('pairGot');
+  const url = APP_URL ? `${APP_URL}?p=${code}` : '';
+  openSheet(`<h3>👥 ${esc(L.cats.compat[0])}</h3><p>${esc(t('pairSub'))}</p>${slip(tag, text)}
+    ${invited ? '' : `<button class="btn gold" id="pairSend" type="button">${esc(t('pairBtn'))}</button>`}${closeBtn()}`);
+  bindSlip($('sheet'), text, tag);
+  if(!invited) $('pairSend').addEventListener('click', async ()=>{
+    const msg = `☕ ${T.appName} — ${t('pairGot')}`;
+    try{
+      if(navigator.share){ await navigator.share(url ? {text: msg, url} : {text: `${msg}\n${text}`}); return; }
+      await navigator.clipboard.writeText(url ? `${msg}\n${url}` : `${msg}\n${text}`);
+      toast(t('copied'));
+    }catch(e){}
+  });
   bindClose();
 }
 
 // ==== Късметче от приятел: линк ...?g=<ref> показва същото късметче и кани човека да обърне своята чаша ====
 function showGift(){
   const q = new URLSearchParams(location.search), g = fromRef(q.get('g'));
+  const p = q.get('p');
+  if(p && /^[a-z0-9]{4,12}$/.test(p)){ try{ history.replaceState(null, '', location.pathname); }catch(e){} openPair(p, true); return; }
   if(!q.has('g')) return;
   try{ history.replaceState(null, '', location.pathname); }catch(e){}
   if(!g) return;
@@ -706,7 +821,8 @@ function openCup(){
   bindClose();
 }
 $('cupBtn2').addEventListener('click', openCup);
-$('streak').addEventListener('click', ()=>toast(`🔥 ${t('streak')}: ${streak().n} · ${t('best')}: ${streak().best || streak().n}`));
+$('streak').addEventListener('click', openWeek);
+$('remindBtn').addEventListener('click', openRemind);
 
 // ==== Запазени ====
 function openFavs(){
@@ -758,10 +874,12 @@ function renderAll(){
   $('langBtn').textContent = `🌍 ${LANG.toUpperCase()}`;
   $('hMore').textContent = t('more'); $('hPro').textContent = t('premium');
   $('cupBtn2').textContent = `☕ ${t('myCup')}`; $('favBtn').textContent = `❤ ${t('saved')}`;
+  const rem = read(K.remind, {on:false, time:'08:00'});
+  $('remindBtn').textContent = rem.on ? `🔔 ${rem.time}` : `🔔 ${t('remindBtn')}`;
   $('foot').textContent = t('footer');
   renderHero(); renderCats();
 }
-setLang(pickLang()).then(()=>{ if(!giftShown){ giftShown = true; showGift(); } });
+setLang(pickLang()).then(()=>{ if(!giftShown){ giftShown = true; showGift(); } scheduleReminder(); });
 // Ако приложението стои отворено през нощта — на сутринта показва новия ден
 document.addEventListener('visibilitychange', ()=>{ if(L && document.visibilityState === 'visible' && $('overlay').style.display !== 'flex') renderHero(); });
 if('serviceWorker' in navigator && location.protocol === 'https:'){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }); }

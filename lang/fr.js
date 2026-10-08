@@ -3,7 +3,7 @@ L10N.fr = {
  "ui": {
   "appName": "Kusmetcho",
   "tagline": "un petit mot porte-bonheur avec ton café",
-  "price": "2,99 €",
+  "price": "4,99 €",
   "heroSub": "Prends une gorgée et retourne la tasse — le petit mot du jour t’attend dedans.",
   "flip": "Retourne la tasse",
   "dailyTag": "Petit mot du {d}",
@@ -13,7 +13,7 @@ L10N.fr = {
   "comeBack": "Un nouveau t’attend demain. Viens avec ton café.",
   "more": "Encore des petits mots",
   "premium": "Premium",
-  "unlockAll": "Tout débloquer — {p} une seule fois",
+  "unlockAll": "Débloquer Premium — {p} par an",
   "myCup": "Ma tasse",
   "saved": "Enregistrés",
   "footer": "Juste pour s’amuser — les petits mots et les horoscopes ne sont ni des prédictions ni des conseils.",
@@ -43,9 +43,8 @@ L10N.fr = {
   "weekOf": "Semaine du {d}",
   "todayIs": "Aujourd’hui, {d}",
   "weekFocus": "Thème de la semaine : {x}.",
-  "unlockText": "Un seul achat — pas d’abonnement. Débloque pour toujours :",
+  "unlockText": "Premium est un abonnement — tu l’arrêtes quand tu veux depuis le store. Il débloque :",
   "unlockExtras": "Des thèmes, plus de tasses, de couleurs et une couronne",
-  "buy": "Débloquer pour {p}",
   "soon": "L’achat fonctionnera dans l’appli sur Google Play / l’App Store — bientôt.",
   "shapeL": "Forme",
   "colorL": "Couleur",
@@ -68,7 +67,29 @@ L10N.fr = {
   "giftCta": "À toi de retourner ta tasse",
   "pickTwo": "Choisis deux signes et vois si vous allez bien ensemble.",
   "compatL": "Compatibilité",
-  "themeL": "Thème"
+  "themeL": "Thème",
+  "priceMonth": "0,89 €",
+  "planYear": "Annuel — {p} par an",
+  "planMonth": "Mensuel — {p} par mois",
+  "bestDeal": "le plus avantageux : moins de 0,42 € par mois",
+  "listen": "Écouter",
+  "remindBtn": "Rappel",
+  "remindT": "Rappel du café",
+  "remindSub": "Chaque jour, à l’heure choisie, la tasse t’appelle pour que tu la retournes.",
+  "remindOn": "Activer le rappel",
+  "remindOff": "Désactiver",
+  "remindSaved": "Je te le rappellerai à {t}",
+  "remindNative": "Le rappel fonctionne pleinement dans l’appli pour téléphone. Dans le navigateur, il n’arrive que si la page est ouverte.",
+  "notifTitle": "Ton café refroidit ☕",
+  "notifBody": "Retourne la tasse — le petit mot du jour t’attend.",
+  "weekT": "Ma semaine",
+  "weekDays": "Jours avec un petit mot",
+  "weekSymbol": "Symbole le plus fréquent",
+  "weekNums": "Chiffres porte-bonheur",
+  "weekEmpty": "Retourne la tasse quelques jours de suite et ta semaine apparaîtra ici.",
+  "pairSub": "Le même petit mot pour deux, pour aujourd’hui. Envoie le lien à la personne avec qui tu prends ton café.",
+  "pairBtn": "Inviter avec un lien",
+  "pairGot": "Un petit mot pour deux"
  },
  "greet": [
   "Bonjour !",
@@ -120,6 +141,14 @@ L10N.fr = {
   "compat": [
    "Café pour deux",
    "Deux signes vont-ils bien ensemble ?"
+  ],
+  "work": [
+   "Pour les collègues",
+   "Humour de bureau"
+  ],
+  "drive": [
+   "Pour les conducteurs",
+   "Humour sur quatre roues"
   ]
  },
  "shapes": [
@@ -712,5 +741,37 @@ L10N.fr = {
   "Cappuccino",
   "Minuit",
   "Matcha"
+ ],
+ "holidays": {
+  "01-01": "Nouvelle année, nouvelle tasse. Ce que tu souhaites au premier café a toute une année pour se réaliser.",
+  "02-14": "Aujourd’hui l’amour se boit dans deux tasses. Si la seconde est vide — regarde autour de toi, quelqu’un arrive.",
+  "03-08": "Aujourd’hui les fleurs sont pour toi. Le café aussi — et que quelqu’un d’autre le prépare.",
+  "12-24": "Ce soir, les vœux s’entendent mieux. Chuchotes-en un au-dessus de la tasse.",
+  "12-25": "Joyeux Noël ! Aujourd’hui la chance est sous le sapin et le café sent la cannelle.",
+  "12-31": "Le dernier café de l’année. Bois-le lentement — le prochain commence avec de la chance."
+ },
+ "work": [
+  "Cette réunion aurait pu être un mail. Le mail aurait pu être un silence.",
+  "Je travaille en équipe. Je travaille, l’équipe regarde.",
+  "« C’est urgent » veut dire que quelqu’un s’en est souvenu à la dernière minute.",
+  "J’adore les échéances. Surtout le sifflement qu’elles font en passant.",
+  "Mon bureau a toujours la porte ouverte. Pour m’échapper plus vite.",
+  "Vendredi après-midi : les cinq minutes les plus productives de la semaine.",
+  "Je ne suis pas en retard au travail. C’est lui qui commence trop tôt.",
+  "Mon chef m’a dit de sortir du cadre. Je pense à mes vacances.",
+  "Mon CV dit « travaille bien sous pression ». Personne ne demande ce que ça me coûte.",
+  "Réunion du lundi : nous sommes tous là, physiquement."
+ ],
+ "drive": [
+  "Le clignotant n’est pas une décoration. Ni une promesse.",
+  "Le GPS a dit « tournez à droite ». Il l’a dit à la mauvaise personne.",
+  "Je me suis garé à la perfection. Personne n’a vu. Ça ne compte pas.",
+  "Ma voiture a deux modes : « réservoir vide » et « je viens de faire le plein ».",
+  "Le bouchon est le seul endroit où nous sommes tous égaux.",
+  "Je ne roule pas vite. Je vole bas.",
+  "Je change mes pneus deux fois par an. Mes résolutions, plus souvent.",
+  "Les essuie-glaces démarrent pile quand la pluie s’arrête.",
+  "Le chemin le plus court est celui que le GPS ne connaît pas.",
+  "La voiture n’est pas sale. Elle a une couche protectrice."
  ]
 };

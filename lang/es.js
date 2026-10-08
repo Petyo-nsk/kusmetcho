@@ -3,7 +3,7 @@ L10N.es = {
  "ui": {
   "appName": "Kusmetcho",
   "tagline": "un mensaje de la suerte con tu café",
-  "price": "2,99 €",
+  "price": "4,99 €",
   "heroSub": "Da un sorbo y dale la vuelta a la taza — dentro te espera el mensaje de hoy.",
   "flip": "Dale la vuelta a la taza",
   "dailyTag": "Mensaje del {d}",
@@ -13,7 +13,7 @@ L10N.es = {
   "comeBack": "Mañana te espera uno nuevo. Trae el café.",
   "more": "Más mensajes",
   "premium": "Premium",
-  "unlockAll": "Desbloquéalo todo — {p} una sola vez",
+  "unlockAll": "Desbloquea Premium — {p} al año",
   "myCup": "Mi taza",
   "saved": "Guardados",
   "footer": "Solo para divertirse — los mensajes y los horóscopos no son predicciones ni consejos.",
@@ -43,9 +43,8 @@ L10N.es = {
   "weekOf": "Semana del {d}",
   "todayIs": "Hoy, {d}",
   "weekFocus": "Tema de la semana: {x}.",
-  "unlockText": "Un solo pago — sin suscripción. Desbloquea para siempre:",
+  "unlockText": "Premium es una suscripción — la cancelas cuando quieras desde la tienda. Desbloquea:",
   "unlockExtras": "Temas, más tazas, colores y una corona",
-  "buy": "Desbloquear por {p}",
   "soon": "La compra funcionará en la app de Google Play / App Store — muy pronto.",
   "shapeL": "Forma",
   "colorL": "Color",
@@ -68,7 +67,29 @@ L10N.es = {
   "giftCta": "Ahora dale la vuelta a tu taza",
   "pickTwo": "Elige dos signos y mira qué tal encajáis.",
   "compatL": "Compatibilidad",
-  "themeL": "Tema"
+  "themeL": "Tema",
+  "priceMonth": "0,89 €",
+  "planYear": "Anual — {p} al año",
+  "planMonth": "Mensual — {p} al mes",
+  "bestDeal": "la más barata: menos de 0,42 € al mes",
+  "listen": "Escuchar",
+  "remindBtn": "Recordatorio",
+  "remindT": "Recordatorio del café",
+  "remindSub": "Cada día, a la hora que elijas, la taza te llamará para que le des la vuelta.",
+  "remindOn": "Activar el recordatorio",
+  "remindOff": "Desactivar",
+  "remindSaved": "Te lo recordaré a las {t}",
+  "remindNative": "El recordatorio funciona del todo en la app del móvil. En el navegador solo llega si la página está abierta.",
+  "notifTitle": "Se te enfría el café ☕",
+  "notifBody": "Dale la vuelta a la taza — el mensaje de hoy te espera.",
+  "weekT": "Mi semana",
+  "weekDays": "Días con mensaje",
+  "weekSymbol": "Símbolo más repetido",
+  "weekNums": "Números de la suerte",
+  "weekEmpty": "Dale la vuelta a la taza varios días seguidos y aquí aparecerá tu semana.",
+  "pairSub": "El mismo mensaje para dos, para hoy. Envía el enlace a la persona con la que tomas café.",
+  "pairBtn": "Invitar con un enlace",
+  "pairGot": "Un mensaje de la suerte para dos"
  },
  "greet": [
   "¡Buenos días!",
@@ -120,6 +141,14 @@ L10N.es = {
   "compat": [
    "Café para dos",
    "Qué tal encajan dos signos"
+  ],
+  "work": [
+   "Para compañeros",
+   "Humor de oficina"
+  ],
+  "drive": [
+   "Para conductores",
+   "Humor sobre cuatro ruedas"
   ]
  },
  "shapes": [
@@ -712,5 +741,37 @@ L10N.es = {
   "Capuchino",
   "Medianoche",
   "Matcha"
+ ],
+ "holidays": {
+  "01-01": "Año nuevo, taza nueva. Lo que pidas con el primer café tiene un año entero para cumplirse.",
+  "02-14": "Hoy el amor se toma en dos tazas. Si la segunda está vacía — mira alrededor, alguien viene.",
+  "03-08": "Hoy las flores son para ti. El café también — y que lo prepare otra persona.",
+  "12-24": "Esta noche los deseos se oyen mejor. Susurra uno sobre la taza.",
+  "12-25": "¡Feliz Navidad! Hoy la suerte está bajo el árbol y el café lleva canela.",
+  "12-31": "El último café del año. Tómatelo despacio — el siguiente empieza con suerte."
+ },
+ "work": [
+  "Esta reunión podría haber sido un correo. El correo podría haber sido silencio.",
+  "Trabajo en equipo. Yo trabajo, el equipo mira.",
+  "«Es urgente» significa que alguien se acordó en el último momento.",
+  "Me encantan los plazos. Sobre todo el zumbido que hacen al pasar de largo.",
+  "Mi despacho tiene la puerta siempre abierta. Para escapar más rápido.",
+  "Viernes por la tarde: los cinco minutos más productivos de la semana.",
+  "No llego tarde al trabajo. Es que empieza demasiado pronto.",
+  "Mi jefe me dijo que pensara de forma diferente. Estoy pensando en las vacaciones.",
+  "En mi currículum pone «trabajo bien bajo presión». Nadie pregunta cuánto me cuesta.",
+  "Reunión del lunes: estamos todos, de cuerpo presente."
+ ],
+ "drive": [
+  "El intermitente no es un adorno. Pero tampoco una promesa.",
+  "El GPS dijo «gire a la derecha». Se lo dijo a la persona equivocada.",
+  "He aparcado perfecto. No me ha visto nadie. No cuenta.",
+  "Mi coche tiene dos modos: «depósito vacío» y «acabo de repostar».",
+  "El atasco es el único sitio donde todos somos iguales.",
+  "No conduzco rápido. Vuelo bajo.",
+  "Cambio las ruedas dos veces al año. Los propósitos, más a menudo.",
+  "Los limpiaparabrisas se ponen en marcha justo cuando deja de llover.",
+  "El camino más corto es el que el GPS no conoce.",
+  "El coche no está sucio. Tiene una capa protectora."
  ]
 };
