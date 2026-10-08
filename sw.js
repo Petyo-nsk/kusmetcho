@@ -1,6 +1,6 @@
 // Service worker — пази приложението на телефона, за да работи и без интернет.
 // При промяна на файловете вдигни версията, за да се изчисти старият кеш.
-const CACHE = 'kusmetcho-v5';
+const CACHE = 'kusmetcho-v6';
 const LANGS = ['bg', 'en', 'ru', 'ro', 'el', 'it', 'es', 'fr', 'tr'];
 const FILES = ['./', './index.html', './manifest.json', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './fonts/themes.css',
   ...['cyrillic-ext', 'cyrillic', 'greek', 'latin-ext', 'latin'].map((s) => `./fonts/comfortaa-${s}.woff2`),
