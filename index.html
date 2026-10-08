@@ -9,6 +9,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="fonts/themes.css">
 <style>
 /* Шрифтът Comfortaa е в папката fonts/ (без външни заявки) — покрива латиница, кирилица и гръцки */
 @font-face{font-family:Comfortaa; font-weight:500 700; font-display:swap; src:url(fonts/comfortaa-cyrillic-ext.woff2) format('woff2'); unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}
@@ -17,10 +18,28 @@
 @font-face{font-family:Comfortaa; font-weight:500 700; font-display:swap; src:url(fonts/comfortaa-latin-ext.woff2) format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF;}
 @font-face{font-family:Comfortaa; font-weight:500 700; font-display:swap; src:url(fonts/comfortaa-latin.woff2) format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 
-:root{ --bg:#17100c; --panel:#231913; --panel2:#2e2119; --line:#3f2f24; --ink:#f7ecdb; --muted:#b49e88; --crema:#f2b24a; --rose:#ec8296; --paper:#f7ecdb; --paperInk:#2a1a12; --disp:Comfortaa,system-ui,sans-serif; }
+/* Теми: „Еспресо“ е безплатната; останалите три идват с Премиум — различни цветове и различен шрифт */
+:root{ --bg:#17100c; --glow:#3b2716; --panel:#231913; --panel2:#2e2119; --line:#3f2f24; --ink:#f7ecdb; --muted:#b49e88; --crema:#f2b24a; --rose:#ec8296;
+  --paper:#f7ecdb; --paperInk:#2a1a12; --warm:#3a2a1c; --tagc:#a0672a; --dash:#cbb79d; --paperMuted:#6d5443; --paperSub:#4a3628; --chipBg:#ecdcc4; --onAccent:#2a1a12; --starc:#c98a2b;
+  --disp:Comfortaa,system-ui,sans-serif; }
+:root[data-theme="cappuccino"]{ --bg:#f3e7d6; --glow:#fff6e8; --panel:#fffaf2; --panel2:#f1e2cd; --line:#e2cfb5; --ink:#3a2618; --muted:#8a7360; --crema:#b5651d; --rose:#c2475f;
+  --paper:#fffdf8; --paperInk:#2a1a12; --warm:#f6e3c6; --tagc:#b5651d; --dash:#e2cfb5; --paperMuted:#7a6352; --paperSub:#5a4334; --chipBg:#f1e2cd; --onAccent:#fffaf2; --starc:#b5651d;
+  --disp:Alegreya,Georgia,serif; }
+:root[data-theme="midnight"]{ --bg:#0e0f1f; --glow:#2a1f55; --panel:#17182e; --panel2:#20223d; --line:#2e3157; --ink:#eceafd; --muted:#9a9cc4; --crema:#9d8cff; --rose:#ff8fb1;
+  --paper:#eceafd; --paperInk:#17182e; --warm:#262a52; --tagc:#6a55e0; --dash:#c3bfe8; --paperMuted:#55577d; --paperSub:#3a3c60; --chipBg:#dbd7f7; --onAccent:#12122a; --starc:#6a55e0;
+  --disp:Jura,system-ui,sans-serif; }
+:root[data-theme="matcha"]{ --bg:#0f1712; --glow:#1f3a28; --panel:#17231b; --panel2:#1f2e24; --line:#2c4233; --ink:#eaf5e6; --muted:#93ad98; --crema:#9bd66f; --rose:#f2a07b;
+  --paper:#f1f7e6; --paperInk:#17231b; --warm:#22382a; --tagc:#4c8a2a; --dash:#c5d8b4; --paperMuted:#55694f; --paperSub:#3b4d37; --chipBg:#dfecc9; --onAccent:#10200f; --starc:#4c8a2a;
+  --disp:Ubuntu,system-ui,sans-serif; }
+:root[data-theme="cappuccino"] .slip{filter:drop-shadow(0 6px 14px rgba(90,60,30,.18));}
+.themeRow{display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin-bottom:14px;}
+.themeRow button{border:2px solid var(--line); border-radius:14px; padding:10px 4px 8px; font-size:.7rem; font-weight:700; line-height:1.25;}
+.themeRow button.on{border-color:var(--crema);}
+.themeRow button i{display:block; width:22px; height:22px; border-radius:50%; margin:0 auto 6px;}
+.themeRow small{display:block; font-size:.6rem; opacity:.75;}
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
 html,body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
-body{background:radial-gradient(90% 46% at 50% 0%, #3b2716 0%, var(--bg) 70%) no-repeat, var(--bg); min-height:100vh;}
+body{background:radial-gradient(90% 46% at 50% 0%, var(--glow) 0%, var(--bg) 70%) no-repeat, var(--bg); min-height:100vh;}
 button,input{font:inherit; color:inherit;}
 button{border:0; cursor:pointer;}
 .app{max-width:480px; margin:0 auto; padding:14px 16px calc(28px + env(safe-area-inset-bottom));}
@@ -50,25 +69,25 @@ button{border:0; cursor:pointer;}
 
 .hello{font:700 1.3rem/1.25 var(--disp); margin:0 0 4px;}
 .sub{color:var(--muted); font-size:.92rem; margin:0 auto 16px; max-width:22em;}
-.main{background:var(--crema); color:#2a1a12; border-radius:999px; padding:14px 28px; font:700 1.02rem/1 var(--disp); box-shadow:0 10px 30px rgba(242,178,74,.25);}
+.main{background:var(--crema); color:var(--onAccent); border-radius:999px; padding:14px 28px; font:700 1.02rem/1 var(--disp); box-shadow:0 10px 30px rgba(242,178,74,.25);}
 .main:active{transform:scale(.97);}
 
 /* Късметчето е хартийка с назъбени краища — това е „лицето“ на приложението и в споделените картинки */
 .slip{animation:pop .5s cubic-bezier(.2,.9,.3,1.2); background:var(--paper); color:var(--paperInk); padding:22px 18px 16px; text-align:left; margin:10px 0 0;
   -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 51% repeat-x, conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/14px 51% repeat-x;
   mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/14px 51% repeat-x, conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/14px 51% repeat-x;}
-.slip .tag{font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:#a0672a; font-weight:800;}
+.slip .tag{font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--tagc); font-weight:800;}
 .slip .txt{font:700 1.16rem/1.42 var(--disp); margin:8px 0 12px; white-space:pre-line;}
-.slip .lucky{display:flex; flex-wrap:wrap; gap:6px 14px; font-size:.8rem; color:#6d5443; border-top:1px dashed #cbb79d; padding-top:10px; margin-bottom:10px;}
+.slip .lucky{display:flex; flex-wrap:wrap; gap:6px 14px; font-size:.8rem; color:var(--paperMuted); border-top:1px dashed var(--dash); padding-top:10px; margin-bottom:10px;}
 .slip .lucky b{color:var(--paperInk);}
-.slip .grounds{display:grid; gap:6px; font-size:.84rem; color:#4a3628; border-top:1px dashed #cbb79d; padding-top:10px; margin-bottom:10px;}
-.slip .grounds .gt{font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:#a0672a; font-weight:800;}
+.slip .grounds{display:grid; gap:6px; font-size:.84rem; color:var(--paperSub); border-top:1px dashed var(--dash); padding-top:10px; margin-bottom:10px;}
+.slip .grounds .gt{font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--tagc); font-weight:800;}
 .slip .grounds b{color:var(--paperInk);}
 .acts{display:flex; gap:6px;}
-.acts button{flex:1; background:#ecdcc4; color:var(--paperInk); border-radius:10px; padding:9px 4px; font-size:.8rem; font-weight:700;}
+.acts button{flex:1; background:var(--chipBg); color:var(--paperInk); border-radius:10px; padding:9px 4px; font-size:.8rem; font-weight:700;}
 .acts button.on{background:#f5c6cf; color:#9c2942;}
-.stars{display:grid; grid-template-columns:auto 1fr; gap:3px 12px; font-size:.86rem; border-top:1px dashed #cbb79d; padding-top:10px; margin-bottom:10px;}
-.stars span{color:#6d5443;} .stars b{color:#c98a2b; letter-spacing:.08em;}
+.stars{display:grid; grid-template-columns:auto 1fr; gap:3px 12px; font-size:.86rem; border-top:1px dashed var(--dash); padding-top:10px; margin-bottom:10px;}
+.stars span{color:var(--paperMuted);} .stars b{color:var(--starc); letter-spacing:.08em;}
 .after{color:var(--muted); font-size:.86rem; margin:14px 0 0;}
 
 h2{font:700 .78rem/1 var(--disp); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:26px 2px 10px;}
@@ -80,9 +99,9 @@ h2{font:700 .78rem/1 var(--disp); letter-spacing:.14em; text-transform:uppercase
 .cat small{color:var(--muted); font-size:.76rem; line-height:1.3; display:block; margin-top:2px;}
 .cat.lock b,.cat.lock small,.cat.lock .ico{opacity:.62;}
 .cat .badge{position:absolute; top:10px; right:10px; font-size:.66rem; font-weight:800; background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:2px 8px; color:var(--crema);}
-.cat.wide{grid-column:1 / -1; display:flex; align-items:center; gap:12px; background:linear-gradient(100deg, #3a2a1c, var(--panel));}
+.cat.wide{grid-column:1 / -1; display:flex; align-items:center; gap:12px; background:linear-gradient(100deg, var(--warm), var(--panel));}
 .cat.wide b{margin:0;}
-.proCard{margin-top:12px; border:1.5px solid var(--crema); border-radius:20px; padding:16px 16px 18px; background:linear-gradient(160deg, #3a2a1c, var(--panel) 70%); text-align:center;}
+.proCard{margin-top:12px; border:1.5px solid var(--crema); border-radius:20px; padding:16px 16px 18px; background:linear-gradient(160deg, var(--warm), var(--panel) 70%); text-align:center;}
 .proCard .proT{font:700 1.05rem/1.25 var(--disp); color:var(--crema); margin-bottom:10px;}
 .proCard ul{list-style:none; padding:0; margin:0 0 10px; text-align:left; font-size:.88rem; display:grid; gap:6px;}
 .proCard li{color:var(--muted);} .proCard li b{color:var(--ink);}
@@ -90,7 +109,7 @@ h2{font:700 .78rem/1 var(--disp); letter-spacing:.14em; text-transform:uppercase
 .proCard .main{width:100%; padding:14px 12px; font-size:.95rem;}
 .slip.peek{animation:none;}
 .slip .blur{filter:blur(6px); user-select:none; -webkit-user-select:none;}
-.slip .peekNote{font-size:.82rem; font-weight:700; color:#a0672a; border-top:1px dashed #cbb79d; padding-top:10px;}
+.slip .peekNote{font-size:.82rem; font-weight:700; color:var(--tagc); border-top:1px dashed var(--dash); padding-top:10px;}
 .row{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px;}
 .row button{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:13px 8px; font-weight:700; font-size:.9rem;}
 footer{margin-top:26px; text-align:center; color:var(--muted); font-size:.72rem; line-height:1.6;}
@@ -101,7 +120,7 @@ footer a{color:var(--muted);}
 .sheet h3{margin:0 0 12px; font:700 1.15rem/1.2 var(--disp);}
 .sheet p{color:var(--muted); font-size:.9rem; margin:0 0 14px;}
 .btn{display:block; width:100%; border-radius:14px; padding:13px; font:700 .95rem/1.2 var(--disp); margin-top:8px;}
-.btn.gold{background:var(--crema); color:#2a1a12;}
+.btn.gold{background:var(--crema); color:var(--onAccent);}
 .btn.ghost{background:var(--panel2); border:1px solid var(--line);}
 .msg{color:var(--rose); font-size:.85rem; min-height:18px; margin:6px 0 0;}
 .ask{width:100%; background:var(--panel2); border:1px solid var(--line); border-radius:14px; padding:13px 14px; outline:0;}
@@ -112,7 +131,7 @@ footer a{color:var(--muted);}
 .signs button.on{border-color:var(--crema); color:var(--crema);}
 .seg{display:flex; background:var(--panel2); border-radius:12px; padding:3px; margin:12px 0 0;}
 .seg button{flex:1; background:none; border-radius:10px; padding:9px; font-weight:700; font-size:.88rem; color:var(--muted);}
-.seg button.on{background:var(--crema); color:#2a1a12;}
+.seg button.on{background:var(--crema); color:var(--onAccent);}
 .chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;}
 .chip{background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:7px 12px; font-size:.82rem; font-weight:700;}
 .chip.on{border-color:var(--crema); color:var(--crema);}
@@ -155,7 +174,7 @@ window.L10N = {};
 const LANGS = [['bg','Български'],['en','English'],['ru','Русский'],['ro','Română'],['el','Ελληνικά'],['it','Italiano'],['es','Español'],['fr','Français']];
 const K = {day:'kusmetcho-day-v1', streak:'kusmetcho-streak-v1', premium:'kusmetcho-premium-v1', cup:'kusmetcho-cup-v1', favs:'kusmetcho-favs-v1',
            bags:'kusmetcho-bags-v1', device:'kusmetcho-device-v1', sign:'kusmetcho-sign-v1', adult:'kusmetcho-18-v1', lang:'kusmetcho-lang-v1',
-           taste:'kusmetcho-taste-v1'};
+           taste:'kusmetcho-taste-v1', theme:'kusmetcho-theme-v1'};
 const read = (k, f)=>{ try{ const v = JSON.parse(localStorage.getItem(k)); return v ?? f; }catch(e){ return f; } };
 const write = (k, v)=>{ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} };
 const esc = s=>String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -270,6 +289,17 @@ const CUP_COLORS = [
 ];
 const CUP_SHAPES = [{id:'mug'}, {id:'espresso'}, {id:'turska', streak:3}, {id:'togo', pro:true}, {id:'latte', pro:true}];
 const CUP_ACCS = [{id:'none'}, {id:'bow'}, {id:'glasses', streak:3}, {id:'hat', streak:7}, {id:'crown', pro:true}];
+// Теми: цветовете и шрифтът са в стиловете (:root[data-theme=…]); bg/ac са само за кръгчето при избора
+const THEMES = [{id:'espresso', bg:'#231913', ac:'#f2b24a'}, {id:'cappuccino', bg:'#fffaf2', ac:'#b5651d', pro:true},
+                {id:'midnight', bg:'#17182e', ac:'#9d8cff', pro:true}, {id:'matcha', bg:'#17231b', ac:'#9bd66f', pro:true}];
+function applyTheme(){
+  const th = THEMES.find(x=>x.id === read(K.theme, 'espresso'));
+  const id = th && unlocked(th) ? th.id : 'espresso';           // без премиум → обратно към безплатната
+  if(id === 'espresso') delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = id;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if(meta) meta.content = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#17100c';
+  return id;
+}
 function unlocked(item){
   if(item.pro) return isPremium();
   if(item.streak) return Math.max(streak().best || 0, streak().n) >= item.streak;
@@ -308,8 +338,8 @@ function cupSvg(cup, mood, still){
   }[cup.acc] || '';
   const overHead = cup.acc === 'hat' || cup.acc === 'crown';
   const steam = (still || overHead) ? '' : (mood === 'sleepy'
-    ? `<text class="zz" x="${fx+16}" y="${top-4}" font-size="9" font-weight="700" fill="#b49e88">z</text><text class="zz" x="${fx+23}" y="${top-11}" font-size="6.5" font-weight="700" fill="#b49e88">z</text>`
-    : `<g class="steam" fill="none" stroke="#f7ecdb" stroke-width="2.2" stroke-linecap="round">${[-9, 0, 9].map(dx=>`<path d="M${fx+dx} ${top-3} q-3.5 -4.5 0 -9 q3.5 -4.5 0 -9"/>`).join('')}</g>`);
+    ? `<text class="zz" x="${fx+16}" y="${top-4}" font-size="9" font-weight="700" style="fill:var(--muted)">z</text><text class="zz" x="${fx+23}" y="${top-11}" font-size="6.5" font-weight="700" style="fill:var(--muted)">z</text>`
+    : `<g class="steam" fill="none" style="stroke:var(--muted)" stroke-width="2.2" stroke-linecap="round">${[-9, 0, 9].map(dx=>`<path d="M${fx+dx} ${top-3} q-3.5 -4.5 0 -9 q3.5 -4.5 0 -9"/>`).join('')}</g>`);
   return `<ellipse cx="${fx}" cy="93" rx="27" ry="2.6" fill="#000" opacity=".28"/>${steam}${S.body}${cheeks}${eyes}${mouth}${acc}`;
 }
 const cupMarkup = (cup, mood, cls, still)=>`<svg viewBox="0 0 100 100" aria-hidden="true"><g class="cup ${cls || ''}" style="transform-origin:50px 60px">${cupSvg(cup, mood, still)}</g></svg>`;
@@ -400,7 +430,10 @@ async function shareImage(text, tag){
     if(document.fonts && document.fonts.ready) await document.fonts.ready;
     const W = 1080, H = 1350, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
     const x = cv.getContext('2d');
-    const g = x.createRadialGradient(W/2, 0, 60, W/2, 300, 1100); g.addColorStop(0, '#4a321c'); g.addColorStop(1, '#17100c');
+    // цветовете и шрифтът идват от избраната тема
+    const cs = getComputedStyle(document.documentElement), v = n=>cs.getPropertyValue(n).trim();
+    const FONT = v('--disp') || 'Comfortaa, system-ui, sans-serif';
+    const g = x.createRadialGradient(W/2, 0, 60, W/2, 300, 1100); g.addColorStop(0, v('--glow')); g.addColorStop(1, v('--bg'));
     x.fillStyle = g; x.fillRect(0, 0, W, H);
     // чашата
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 100 100">${cupSvg(myCup(), 'happy', true)}</svg>`;
@@ -411,7 +444,7 @@ async function shareImage(text, tag){
     const boxW = 860, pad = 70;
     let size = 62, lines = [];
     const wrap = ()=>{
-      x.font = `700 ${size}px Comfortaa, system-ui, sans-serif`; lines = [];
+      x.font = `700 ${size}px ${FONT}`; lines = [];
       for(const para of text.split('\n')){
         let line = '';
         for(const w of para.split(' ')){
@@ -424,7 +457,7 @@ async function shareImage(text, tag){
     wrap(); while(lines.length * size * 1.38 > 520 && size > 34){ size -= 4; wrap(); }
     const lh = size * 1.38, boxH = lines.length * lh + pad*2 + 50, bx = (W - boxW)/2, by = 500;
     // хартийката с назъбени краища
-    x.fillStyle = '#f7ecdb'; x.beginPath();
+    x.fillStyle = v('--paper'); x.beginPath();
     const z = 22, n = Math.round(boxW / (z*2));
     x.moveTo(bx, by + z);
     for(let i = 0; i < n; i++){ x.lineTo(bx + (i + .5) * boxW / n, by); x.lineTo(bx + (i + 1) * boxW / n, by + z); }
@@ -432,14 +465,14 @@ async function shareImage(text, tag){
     for(let i = n; i > 0; i--){ x.lineTo(bx + (i - .5) * boxW / n, by + boxH); x.lineTo(bx + (i - 1) * boxW / n, by + boxH - z); }
     x.closePath(); x.shadowColor = 'rgba(0,0,0,.45)'; x.shadowBlur = 50; x.shadowOffsetY = 24; x.fill();
     x.shadowColor = 'transparent';
-    x.fillStyle = '#a0672a'; x.font = '800 26px system-ui, sans-serif'; x.textBaseline = 'top';
+    x.fillStyle = v('--tagc'); x.font = '800 26px system-ui, sans-serif'; x.textBaseline = 'top';
     x.fillText(String(tag || T.appName).toUpperCase().split('').join(' '), bx + pad, by + pad - 10);
-    x.fillStyle = '#2a1a12'; x.font = `700 ${size}px Comfortaa, system-ui, sans-serif`;
+    x.fillStyle = v('--paperInk'); x.font = `700 ${size}px ${FONT}`;
     lines.forEach((l, i)=>x.fillText(l, bx + pad, by + pad + 40 + i * lh));
     // подписът
-    x.textAlign = 'center'; x.fillStyle = '#f2b24a'; x.font = '700 54px Comfortaa, system-ui, sans-serif';
+    x.textAlign = 'center'; x.fillStyle = v('--crema'); x.font = `700 54px ${FONT}`;
     x.fillText(`☕ ${T.appName}`, W/2, H - 150);
-    x.fillStyle = '#b49e88'; x.font = '600 30px system-ui, sans-serif';
+    x.fillStyle = v('--muted'); x.font = '600 30px system-ui, sans-serif';
     x.fillText(T.tagline, W/2, H - 80);
     const blob = await new Promise(ok=>cv.toBlob(ok, 'image/png'));
     const file = new File([blob], 'kusmetcho.png', {type:'image/png'});
@@ -643,11 +676,13 @@ function showGift(){
 
 // ==== Моята чаша ====
 function openCup(){
-  const cup = myCup();
+  const cup = myCup(), theme = applyTheme();
   const thumb = shape=>`<svg viewBox="0 0 100 100">${cupSvg({shape, color: cup.color, acc:'none'}, 'happy', true)}</svg>`;
   const chip = (it, kind, on, label)=>`<button type="button" class="chip ${on ? 'on' : ''} ${unlocked(it) ? '' : 'lock'}" data-kind="${kind}" data-id="${it.id}">${kind === 'color' ? `<i style="background:${it.c}"></i>` : ''}${unlocked(it) ? '' : '🔒 '}${esc(label)}${unlocked(it) ? '' : ` · ${esc(lockLabel(it))}`}</button>`;
   openSheet(`<h3>☕ ${esc(t('myCup'))}</h3>
     <div style="width:140px; height:140px; margin:0 auto 6px">${cupMarkup(cup, 'happy', 'bob')}</div>
+    <div class="label">${esc(t('themeL'))}</div>
+    <div class="themeRow">${THEMES.map((th, i)=>`<button type="button" class="${theme === th.id ? 'on' : ''}" data-theme-id="${th.id}" style="background:${th.bg}; color:${th.id === 'cappuccino' ? '#3a2618' : '#f7ecdb'}"><i style="background:${th.ac}"></i>${esc(L.themes[i])}${unlocked(th) ? '' : `<small>🔒 ${esc(t('premium'))}</small>`}</button>`).join('')}</div>
     <div class="label">${esc(t('shapeL'))}</div>
     <div class="shapeRow">${CUP_SHAPES.map((s, i)=>`<button type="button" class="${cup.shape === s.id ? 'on' : ''} ${unlocked(s) ? '' : 'lock'}" data-kind="shape" data-id="${s.id}">${thumb(s.id)}${esc(L.shapes[i])}${unlocked(s) ? '' : `<small>🔒 ${esc(lockLabel(s))}</small>`}</button>`).join('')}</div>
     <div class="label">${esc(t('colorL'))}</div>
@@ -656,6 +691,11 @@ function openCup(){
     <div class="chips">${CUP_ACCS.map((a, i)=>chip(a, 'acc', cup.acc === a.id, L.accs[i])).join('')}</div>
     <p>${esc(t('cupHint'))}</p>
     <button class="btn ghost" id="close" type="button">${esc(t('done'))}</button>`);
+  $('sheet').querySelectorAll('[data-theme-id]').forEach(b=>b.addEventListener('click', ()=>{
+    const th = THEMES.find(x=>x.id === b.dataset.themeId);
+    if(!unlocked(th)){ openUnlock(); return; }
+    write(K.theme, th.id); applyTheme(); openCup();
+  }));
   const lists = {shape: CUP_SHAPES, color: CUP_COLORS, acc: CUP_ACCS};
   $('sheet').querySelectorAll('[data-kind]').forEach(b=>b.addEventListener('click', ()=>{
     const it = lists[b.dataset.kind].find(x=>x.id === b.dataset.id);
@@ -712,6 +752,7 @@ $('title').addEventListener('click', ()=>{
 }
 
 function renderAll(){
+  applyTheme();
   const n = T.appName;
   $('title').innerHTML = `${esc(n.slice(0, -1))}<b>${esc(n.slice(-1))}</b>`;
   $('langBtn').textContent = `🌍 ${LANG.toUpperCase()}`;

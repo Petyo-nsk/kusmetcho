@@ -44,7 +44,7 @@ L10N.en = {
   "todayIs": "Today, {d}",
   "weekFocus": "Theme of the week: {x}.",
   "unlockText": "One-time purchase — no subscription. Unlocks forever:",
-  "unlockExtras": "More cups, colours and a crown",
+  "unlockExtras": "Themes, more cups, colours and a crown",
   "buy": "Unlock for {p}",
   "soon": "Purchases will work in the app from Google Play / the App Store — coming soon.",
   "shapeL": "Shape",
@@ -67,7 +67,8 @@ L10N.en = {
   "giftGot": "Someone sent you a lucky note",
   "giftCta": "Now flip your own cup",
   "pickTwo": "Pick two signs and see how well you go together.",
-  "compatL": "Match"
+  "compatL": "Match",
+  "themeL": "Theme"
  },
  "greet": [
   "Good morning!",
@@ -187,7 +188,23 @@ L10N.en = {
   "Expect the unexpected — this time it’s a nice one.",
   "Whatever you decide today will be the right call.",
   "Today will be like good coffee: strong, warm and a little sweet at the end.",
-  "The coffee is ending. The luck is just getting started."
+  "The coffee is ending. The luck is just getting started.",
+  "Someone will save you five minutes today. Spend them on one more sip.",
+  "It starts with something tiny today — and then the whole day rolls.",
+  "The person next to you in the queue knows something you need. Say hi.",
+  "Today “maybe” is not an option. Pick yes or no.",
+  "A smile you gave long ago comes back today.",
+  "Something old will come in handy today. Good thing you kept it.",
+  "You’re rushing for nothing — what’s meant for you is waiting.",
+  "You’ll say the right words at the right moment. Remember them.",
+  "A little madness today makes a great story tomorrow.",
+  "You’ll hear “yes” where you expected “we’ll see”.",
+  "A day for a fresh start. Or at least a fresh cup.",
+  "Your phone brings more joy than usual today.",
+  "What you’re looking for out there is already at home.",
+  "You’ll learn something new about an old friend.",
+  "Your luck likes company today — go out with someone.",
+  "Every “thank you” comes back threefold today."
  ],
  "love": [
   "Someone likes you more than they let on.",
@@ -213,7 +230,15 @@ L10N.en = {
   "Take the first step. They’ll take the second.",
   "If you’re wondering whether to text — text.",
   "Today you’ll hear “I love you” — in words or as a plate of warm food.",
-  "The nice thing about love: it shows up without an invitation."
+  "The nice thing about love: it shows up without an invitation.",
+  "Someone saved your photo. Not by accident.",
+  "Your name sounds different in someone’s mouth today.",
+  "The right person makes you laugh first and think later.",
+  "Someone will miss you today — and say so.",
+  "A look across the room will last one second too long.",
+  "Love likes the brave. Be brave for five minutes.",
+  "Someone remembers how you take your coffee.",
+  "Tonight is for two, even if one of you doesn’t know it yet."
  ],
  "money": [
   "Unexpected money is coming your way. It may be loose change, but it’s coming.",
@@ -239,7 +264,15 @@ L10N.en = {
   "You’ll finally finish that task. The feeling is priceless.",
   "A new project is on the horizon. Sharpen your pencils.",
   "An old debt comes back — in cash or in favours.",
-  "Success today is one cup of coffee away."
+  "Success today is one cup of coffee away.",
+  "A small saving today turns into a nice habit.",
+  "You’ll find a better price just before you pay.",
+  "Someone will recommend you without telling you.",
+  "An old skill of yours is suddenly in demand.",
+  "Today “how much?” is the right question. Ask it.",
+  "A bill turns out smaller than you feared.",
+  "A good day to finally send that email.",
+  "Your work speaks for you today. Let it."
  ],
  "fun": [
   "Coffee doesn’t solve problems. But neither does water.",
@@ -266,7 +299,15 @@ L10N.en = {
   "I drink coffee for your protection.",
   "Money can’t buy happiness. It buys coffee, which is close enough.",
   "I love work. I could watch it for hours.",
-  "Life is short. Pour another one."
+  "Life is short. Pour another one.",
+  "I’m not a morning person. I’m barely an afternoon person.",
+  "My bed and I are in love. The alarm clock is jealous.",
+  "Today’s workout: running late and jumping to conclusions.",
+  "I came, I saw, I forgot why I came.",
+  "I don’t need a hairdresser. My pillow gives me a new style every morning.",
+  "Being an adult is saying “it’ll calm down after this week” every week.",
+  "I’m not arguing. I’m explaining why I’m right.",
+  "My wallet is like an onion: opening it makes me cry."
  ],
  "motivation": [
   "Start where you are. With what you have. After the coffee.",
@@ -290,7 +331,13 @@ L10N.en = {
   "Be the person you needed years ago.",
   "You don’t have to conquer the world today. Just don’t give up.",
   "You have the right to rest. You don’t have the right to quit.",
-  "One day you’ll tell the story of how you did it. Start today."
+  "One day you’ll tell the story of how you did it. Start today.",
+  "Done is better than perfect.",
+  "You don’t have to see the whole staircase. Take the first step.",
+  "Rest is part of the work, not a reward for it.",
+  "A year from now you’ll be glad you started today.",
+  "Slow progress is still progress.",
+  "Ask. The worst answer is the one you already have."
  ],
  "adult": [
   "— Honey, talk dirty to me.\n— The kitchen.",
@@ -328,7 +375,11 @@ L10N.en = {
   "My organs aren’t fit for donation. The liver is a collector’s item.",
   "Cemeteries are full of irreplaceable people. And there are still vacancies.",
   "My diagnosis is “Monday”. Chronic.",
-  "If anyone asks — I’m dead. If they’re bringing money — I’m back."
+  "If anyone asks — I’m dead. If they’re bringing money — I’m back.",
+  "My life is a movie. Sadly, a documentary about procrastination.",
+  "I have a plan B. It’s plan A, with more crying.",
+  "My salary arrives like a house guest: stays briefly and leaves a mess.",
+  "Experience is what you get when you didn’t get what you wanted."
  ],
  "spicy": [
   "Tonight someone will take down more than the stars for you.",
@@ -350,7 +401,11 @@ L10N.en = {
   "Tonight, switch off the phone. And the light.",
   "Coffee in bed in the morning is a reward for a job well done at night.",
   "Today “come here” is a full sentence.",
-  "Tonight’s massage won’t end as a massage."
+  "Tonight’s massage won’t end as a massage.",
+  "Tonight, lock the door before you say hello.",
+  "Someone is counting the buttons on your shirt.",
+  "Your voice on the phone tonight will make someone come over.",
+  "Slow is the new fast. Especially tonight."
  ],
  "combo": {
   "when": [
@@ -651,5 +706,11 @@ L10N.en = {
    "A rare match — hold on to each other.",
    "The stars shrug: nothing to fix here."
   ]
+ ],
+ "themes": [
+  "Espresso",
+  "Cappuccino",
+  "Midnight",
+  "Matcha"
  ]
 };

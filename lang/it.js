@@ -44,7 +44,7 @@ L10N.it = {
   "todayIs": "Oggi, {d}",
   "weekFocus": "Tema della settimana: {x}.",
   "unlockText": "Acquisto unico — nessun abbonamento. Sblocca per sempre:",
-  "unlockExtras": "Altre tazzine, colori e una corona",
+  "unlockExtras": "Temi, altre tazzine, colori e una corona",
   "buy": "Sblocca a {p}",
   "soon": "L’acquisto funzionerà nell’app da Google Play / App Store — presto.",
   "shapeL": "Forma",
@@ -67,7 +67,8 @@ L10N.it = {
   "giftGot": "Qualcuno ti ha mandato un bigliettino",
   "giftCta": "Ora capovolgi la tua tazzina",
   "pickTwo": "Scegli due segni e guarda quanto andate d’accordo.",
-  "compatL": "Affinità"
+  "compatL": "Affinità",
+  "themeL": "Tema"
  },
  "greet": [
   "Buongiorno!",
@@ -187,7 +188,23 @@ L10N.it = {
   "Aspettati l’inaspettato — stavolta è piacevole.",
   "Qualunque cosa tu decida oggi, sarà quella giusta.",
   "La tua giornata sarà come un buon caffè: forte, calda e un po’ dolce alla fine.",
-  "Il caffè finisce, la fortuna comincia adesso."
+  "Il caffè finisce, la fortuna comincia adesso.",
+  "Oggi qualcuno ti farà risparmiare cinque minuti. Usali per un altro sorso.",
+  "Oggi parte tutto da una cosa minuscola — e poi fila tutta la giornata.",
+  "Chi è in fila accanto a te sa una cosa che ti serve. Attacca bottone.",
+  "Oggi «forse» non è un’opzione. Scegli «sì» o «no».",
+  "Oggi torna indietro un sorriso che hai regalato tempo fa.",
+  "Oggi ti tornerà utile una cosa vecchia. Meno male che non l’hai buttata.",
+  "Corri per niente — quello che è tuo ti aspetta.",
+  "Dirai le parole giuste al momento giusto. Ricordale.",
+  "Una piccola follia oggi è una bella storia domani.",
+  "Sentirai «sì» dove ti aspettavi «vediamo».",
+  "Giornata da nuovo inizio. O almeno da nuova tazzina.",
+  "Oggi il telefono ti porta più gioia del solito.",
+  "Quello che cerchi fuori è già a casa.",
+  "Scoprirai qualcosa di nuovo su un vecchio amico.",
+  "Oggi la tua fortuna ama la compagnia — esci con qualcuno.",
+  "Oggi ogni «grazie» torna indietro triplicato."
  ],
  "love": [
   "Piaci a qualcuno più di quanto dia a vedere.",
@@ -213,7 +230,15 @@ L10N.it = {
   "Fai il primo passo. Il secondo lo faranno verso di te.",
   "Se non sai se scrivere — scrivi.",
   "Oggi sentirai «ti amo» — a parole o con un piatto caldo.",
-  "Il bello dell’amore è che arriva anche senza invito."
+  "Il bello dell’amore è che arriva anche senza invito.",
+  "Qualcuno ha salvato una tua foto. E non per sbaglio.",
+  "Oggi il tuo nome suona diverso sulla bocca di qualcuno.",
+  "La persona giusta prima ti fa ridere e poi ti fa pensare.",
+  "Oggi mancherai a qualcuno — e te lo dirà.",
+  "Uno sguardo dall’altra parte della stanza durerà un secondo di troppo.",
+  "L’amore ama i coraggiosi. Sii coraggioso per cinque minuti.",
+  "Qualcuno si ricorda come prendi il caffè.",
+  "Stasera è una serata per due, anche se uno dei due ancora non lo sa."
  ],
  "money": [
   "Stanno arrivando soldi inattesi. Magari è solo il resto, ma arrivano.",
@@ -239,7 +264,15 @@ L10N.it = {
   "Chiuderai una faccenda che si trascina da tempo. La sensazione non ha prezzo.",
   "C’è un nuovo progetto all’orizzonte. Tempera le matite.",
   "Ti restituiranno un vecchio debito — in soldi o in favori.",
-  "Oggi il successo è a una tazzina di caffè di distanza."
+  "Oggi il successo è a una tazzina di caffè di distanza.",
+  "Un piccolo risparmio oggi diventa una bella abitudine.",
+  "Troverai un prezzo migliore un attimo prima di pagare.",
+  "Qualcuno farà il tuo nome senza dirtelo.",
+  "Una tua vecchia abilità è improvvisamente richiesta.",
+  "Oggi «quanto costa?» è la domanda giusta. Falla.",
+  "Una bolletta sarà più bassa di quanto temevi.",
+  "Buon giorno per mandare finalmente quella mail.",
+  "Oggi il tuo lavoro parla per te. Lascialo fare."
  ],
  "fun": [
   "Il caffè non risolve i problemi. Ma nemmeno l’acqua li risolve.",
@@ -266,7 +299,15 @@ L10N.it = {
   "Bevo il caffè per il tuo bene.",
   "I soldi non fanno la felicità. Però comprano il caffè, che è quasi uguale.",
   "Amo il lavoro. Potrei guardarlo per ore.",
-  "La vita è breve. Versane un altro."
+  "La vita è breve. Versane un altro.",
+  "Non sono una persona mattiniera. A malapena sono pomeridiana.",
+  "Io e il letto ci amiamo. La sveglia è gelosa.",
+  "Allenamento di oggi: correre dietro all’autobus e saltare alle conclusioni.",
+  "Venni, vidi, dimenticai perché ero venuto.",
+  "Non mi serve il parrucchiere. Il cuscino mi fa una pettinatura nuova ogni mattina.",
+  "Essere adulti è dire ogni settimana «dopo questa settimana sarà più tranquillo».",
+  "Non sto litigando. Sto spiegando perché ho ragione.",
+  "Il mio portafoglio è come una cipolla: lo apro e mi viene da piangere."
  ],
  "motivation": [
   "Comincia da dove sei. Con quello che hai. Dopo il caffè.",
@@ -290,7 +331,13 @@ L10N.it = {
   "Sii la persona di cui avevi bisogno anni fa.",
   "Oggi non devi conquistare il mondo. Basta non arrenderti.",
   "Hai diritto a riposare. Non hai diritto ad arrenderti.",
-  "Un giorno racconterai come ce l’hai fatta. Comincia oggi."
+  "Un giorno racconterai come ce l’hai fatta. Comincia oggi.",
+  "Fatto è meglio che perfetto.",
+  "Non devi vedere tutta la scala. Sali il primo gradino.",
+  "Il riposo fa parte del lavoro, non è un premio.",
+  "Tra un anno sarai contento di aver cominciato oggi.",
+  "Un progresso lento è comunque un progresso.",
+  "Chiedi. La risposta peggiore ce l’hai già."
  ],
  "adult": [
   "— Amore, dimmi qualcosa di sporco.\n— La cucina.",
@@ -328,7 +375,11 @@ L10N.it = {
   "I miei organi non vanno bene per la donazione. Il fegato è da collezione.",
   "I cimiteri sono pieni di persone insostituibili. Eppure c’è ancora posto.",
   "La mia diagnosi è «lunedì». Cronico.",
-  "Se mi cercano — sono morto. Se portano soldi — sono risorto."
+  "Se mi cercano — sono morto. Se portano soldi — sono risorto.",
+  "La mia vita è un film. Purtroppo un documentario sul rimandare.",
+  "Ho un piano B. È il piano A, con più lacrime.",
+  "Lo stipendio arriva come un ospite: resta poco e lascia disordine.",
+  "L’esperienza è quello che ottieni quando non hai ottenuto quello che volevi."
  ],
  "spicy": [
   "Stasera qualcuno ti tirerà giù più delle stelle.",
@@ -350,7 +401,11 @@ L10N.it = {
   "Stasera spegni il telefono. E la luce.",
   "Il caffè a letto la mattina è il premio per un lavoro ben fatto la notte.",
   "Oggi «vieni qui» è una frase completa.",
-  "Il massaggio di stasera non finirà come un massaggio."
+  "Il massaggio di stasera non finirà come un massaggio.",
+  "Stasera chiudi a chiave prima di dire «ciao».",
+  "Qualcuno sta contando i bottoni della tua camicia.",
+  "Stasera la tua voce al telefono farà venire qualcuno da te.",
+  "Lento è il nuovo veloce. Soprattutto stasera."
  ],
  "combo": {
   "when": [
@@ -651,5 +706,11 @@ L10N.it = {
    "Un’intesa rara — tenetevi stretti.",
    "Le stelle alzano le spalle: qui non c’è niente da sistemare."
   ]
+ ],
+ "themes": [
+  "Espresso",
+  "Cappuccino",
+  "Mezzanotte",
+  "Matcha"
  ]
 };

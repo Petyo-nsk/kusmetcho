@@ -44,7 +44,7 @@ L10N.fr = {
   "todayIs": "Aujourd’hui, {d}",
   "weekFocus": "Thème de la semaine : {x}.",
   "unlockText": "Un seul achat — pas d’abonnement. Débloque pour toujours :",
-  "unlockExtras": "Plus de tasses, de couleurs et une couronne",
+  "unlockExtras": "Des thèmes, plus de tasses, de couleurs et une couronne",
   "buy": "Débloquer pour {p}",
   "soon": "L’achat fonctionnera dans l’appli sur Google Play / l’App Store — bientôt.",
   "shapeL": "Forme",
@@ -67,7 +67,8 @@ L10N.fr = {
   "giftGot": "Quelqu’un t’a envoyé un petit mot",
   "giftCta": "À toi de retourner ta tasse",
   "pickTwo": "Choisis deux signes et vois si vous allez bien ensemble.",
-  "compatL": "Compatibilité"
+  "compatL": "Compatibilité",
+  "themeL": "Thème"
  },
  "greet": [
   "Bonjour !",
@@ -187,7 +188,23 @@ L10N.fr = {
   "Attends-toi à l’inattendu — cette fois, c’est agréable.",
   "Quoi que tu décides aujourd’hui, ce sera le bon choix.",
   "Ta journée sera comme un bon café : forte, chaude et un peu sucrée à la fin.",
-  "Le café se termine, la chance ne fait que commencer."
+  "Le café se termine, la chance ne fait que commencer.",
+  "Aujourd’hui, quelqu’un va te faire gagner cinq minutes. Dépense-les en une gorgée de plus.",
+  "Aujourd’hui tout part d’un petit rien — et la journée roule toute seule.",
+  "La personne à côté de toi dans la file sait quelque chose dont tu as besoin. Engage la conversation.",
+  "Aujourd’hui, « peut-être » n’est pas une option. Choisis « oui » ou « non ».",
+  "Un sourire donné il y a longtemps te revient aujourd’hui.",
+  "Un vieux truc va te servir aujourd’hui. Heureusement que tu l’as gardé.",
+  "Tu cours pour rien — ce qui est pour toi t’attend.",
+  "Tu diras les bons mots au bon moment. Retiens-les.",
+  "Une petite folie aujourd’hui, une belle histoire demain.",
+  "Tu entendras « oui » là où tu attendais « on verra ».",
+  "Un jour pour repartir de zéro. Ou au moins avec une nouvelle tasse.",
+  "Aujourd’hui ton téléphone apporte plus de joie que d’habitude.",
+  "Ce que tu cherches dehors est déjà à la maison.",
+  "Tu apprendras quelque chose de nouveau sur un vieil ami.",
+  "Ta chance aime la compagnie aujourd’hui — sors avec quelqu’un.",
+  "Aujourd’hui chaque « merci » revient multiplié par trois."
  ],
  "love": [
   "Tu plais à quelqu’un plus qu’il ne le montre.",
@@ -213,7 +230,15 @@ L10N.fr = {
   "Fais le premier pas. Le deuxième, on le fera vers toi.",
   "Si tu hésites à écrire — écris.",
   "Aujourd’hui tu entendras « je t’aime » — en mots ou en assiette bien chaude.",
-  "Ce qu’il y a de bien avec l’amour, c’est qu’il arrive sans invitation."
+  "Ce qu’il y a de bien avec l’amour, c’est qu’il arrive sans invitation.",
+  "Quelqu’un a gardé ta photo. Et pas par hasard.",
+  "Aujourd’hui ton prénom sonne autrement dans la bouche de quelqu’un.",
+  "La bonne personne te fait d’abord rire, puis réfléchir.",
+  "Tu vas manquer à quelqu’un aujourd’hui — et il te le dira.",
+  "Un regard à travers la pièce durera une seconde de trop.",
+  "L’amour aime les courageux. Sois courageux cinq minutes.",
+  "Quelqu’un se souvient de la façon dont tu prends ton café.",
+  "Ce soir est une soirée à deux, même si l’un des deux ne le sait pas encore."
  ],
  "money": [
   "De l’argent inattendu arrive vers toi. C’est peut-être de la monnaie, mais il arrive.",
@@ -239,7 +264,15 @@ L10N.fr = {
   "Tu vas enfin boucler un dossier qui traîne. La sensation n’a pas de prix.",
   "Un nouveau projet se dessine à l’horizon. Taille tes crayons.",
   "On va te rendre une vieille dette — en argent ou en service.",
-  "Aujourd’hui, le succès est à une tasse de café."
+  "Aujourd’hui, le succès est à une tasse de café.",
+  "Une petite économie aujourd’hui devient une belle habitude.",
+  "Tu trouveras un meilleur prix juste avant de payer.",
+  "Quelqu’un va te recommander sans te le dire.",
+  "Un de tes vieux talents est soudain recherché.",
+  "Aujourd’hui, « combien ça coûte ? » est la bonne question. Pose-la.",
+  "Une facture sera plus petite que tu ne le craignais.",
+  "Un bon jour pour enfin envoyer ce mail.",
+  "Aujourd’hui ton travail parle pour toi. Laisse-le faire."
  ],
  "fun": [
   "Le café ne résout pas les problèmes. Mais l’eau non plus.",
@@ -266,7 +299,15 @@ L10N.fr = {
   "Je bois du café pour ton bien.",
   "L’argent ne fait pas le bonheur. Mais il achète du café, ce qui revient presque au même.",
   "J’adore le travail. Je pourrais le regarder pendant des heures.",
-  "La vie est courte. Ressers-toi."
+  "La vie est courte. Ressers-toi.",
+  "Je ne suis pas du matin. Je suis à peine de l’après-midi.",
+  "Mon lit et moi, on s’aime. Le réveil est jaloux.",
+  "Sport du jour : courir après le bus et sauter aux conclusions.",
+  "Je suis venu, j’ai vu, j’ai oublié pourquoi j’étais venu.",
+  "Pas besoin de coiffeur. Mon oreiller me fait une nouvelle coupe chaque matin.",
+  "Être adulte, c’est dire chaque semaine « après cette semaine, ce sera plus calme ».",
+  "Je ne me dispute pas. J’explique pourquoi j’ai raison.",
+  "Mon portefeuille est comme un oignon : je l’ouvre et j’ai envie de pleurer."
  ],
  "motivation": [
   "Commence là où tu es. Avec ce que tu as. Après le café.",
@@ -290,7 +331,13 @@ L10N.fr = {
   "Sois la personne dont tu avais besoin il y a des années.",
   "Aujourd’hui, pas besoin de conquérir le monde. Il suffit de ne pas lâcher.",
   "Tu as le droit de te reposer. Pas celui d’abandonner.",
-  "Un jour tu raconteras comment tu as réussi. Commence aujourd’hui."
+  "Un jour tu raconteras comment tu as réussi. Commence aujourd’hui.",
+  "Fait vaut mieux que parfait.",
+  "Pas besoin de voir tout l’escalier. Monte la première marche.",
+  "Le repos fait partie du travail, ce n’est pas une récompense.",
+  "Dans un an, tu seras content d’avoir commencé aujourd’hui.",
+  "Un progrès lent reste un progrès.",
+  "Demande. La pire réponse, tu l’as déjà."
  ],
  "adult": [
   "— Chéri, dis-moi quelque chose de sale.\n— La cuisine.",
@@ -328,7 +375,11 @@ L10N.fr = {
   "Mes organes ne sont pas bons pour le don. Le foie est une pièce de collection.",
   "Les cimetières sont pleins de gens irremplaçables. Et il reste des places.",
   "Mon diagnostic, c’est « lundi ». Chronique.",
-  "Si on me cherche — je suis mort. Si on apporte de l’argent — je suis ressuscité."
+  "Si on me cherche — je suis mort. Si on apporte de l’argent — je suis ressuscité.",
+  "Ma vie est un film. Hélas, un documentaire sur la procrastination.",
+  "J’ai un plan B. C’est le plan A, avec plus de larmes.",
+  "Mon salaire arrive comme un invité : il reste peu et laisse du bazar.",
+  "L’expérience, c’est ce qu’on obtient quand on n’a pas obtenu ce qu’on voulait."
  ],
  "spicy": [
   "Ce soir, quelqu’un va te décrocher plus que les étoiles.",
@@ -350,7 +401,11 @@ L10N.fr = {
   "Ce soir, éteins ton téléphone. Et la lumière.",
   "Le café au lit le matin, c’est la récompense d’un travail bien fait la nuit.",
   "Aujourd’hui, « viens là » est une phrase complète.",
-  "Le massage de ce soir ne se terminera pas en massage."
+  "Le massage de ce soir ne se terminera pas en massage.",
+  "Ce soir, ferme la porte à clé avant de dire bonjour.",
+  "Quelqu’un compte les boutons de ta chemise.",
+  "Ta voix au téléphone ce soir fera venir quelqu’un.",
+  "Lent, c’est le nouveau rapide. Surtout ce soir."
  ],
  "combo": {
   "when": [
@@ -651,5 +706,11 @@ L10N.fr = {
    "Une entente rare — ne vous lâchez pas.",
    "Les étoiles haussent les épaules : rien à corriger ici."
   ]
+ ],
+ "themes": [
+  "Espresso",
+  "Cappuccino",
+  "Minuit",
+  "Matcha"
  ]
 };

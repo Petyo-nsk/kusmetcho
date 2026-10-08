@@ -44,7 +44,7 @@ L10N.ro = {
   "todayIs": "Azi, {d}",
   "weekFocus": "Tema săptămânii: {x}.",
   "unlockText": "O singură plată — fără abonament. Deblochează pentru totdeauna:",
-  "unlockExtras": "Mai multe cești, culori și o coroană",
+  "unlockExtras": "Teme, mai multe cești, culori și o coroană",
   "buy": "Deblochează cu {p}",
   "soon": "Plata va funcționa în aplicația din Google Play / App Store — în curând.",
   "shapeL": "Formă",
@@ -67,7 +67,8 @@ L10N.ro = {
   "giftGot": "Cineva ți-a trimis un răvaș",
   "giftCta": "Acum întoarce-ți ceașca",
   "pickTwo": "Alege două zodii și vezi cât de bine vă potriviți.",
-  "compatL": "Compatibilitate"
+  "compatL": "Compatibilitate",
+  "themeL": "Temă"
  },
  "greet": [
   "Bună dimineața!",
@@ -187,7 +188,23 @@ L10N.ro = {
   "Așteaptă-te la neașteptat — de data asta e plăcut.",
   "Orice ai hotărî azi va fi alegerea bună.",
   "Ziua ta va fi ca o cafea bună: tare, caldă și puțin dulce la final.",
-  "Cafeaua se termină, norocul abia începe."
+  "Cafeaua se termină, norocul abia începe.",
+  "Azi cineva te scutește de cinci minute. Folosește-le pentru încă o gură.",
+  "Azi pornește de la ceva mărunt — și apoi merge toată ziua.",
+  "Omul de lângă tine la coadă știe ceva ce-ți trebuie. Intră în vorbă.",
+  "Azi „poate” nu e o variantă. Alege „da” sau „nu”.",
+  "Un zâmbet dăruit demult se întoarce azi.",
+  "Ceva vechi îți va prinde bine azi. Bine că nu l-ai aruncat.",
+  "Te grăbești degeaba — ce e al tău te așteaptă.",
+  "Vei spune cuvintele potrivite la momentul potrivit. Ține-le minte.",
+  "O mică nebunie azi e o poveste bună mâine.",
+  "Vei auzi „da” acolo unde așteptai „mai vedem”.",
+  "O zi pentru un început nou. Sau măcar pentru o ceașcă nouă.",
+  "Azi telefonul îți aduce mai multă bucurie ca de obicei.",
+  "Ce cauți afară e deja acasă.",
+  "Vei afla ceva nou despre un prieten vechi.",
+  "Norocului tău îi place azi compania — ieși cu cineva.",
+  "Azi fiecare „mulțumesc” se întoarce întreit."
  ],
  "love": [
   "Cineva te place mai mult decât arată.",
@@ -213,7 +230,15 @@ L10N.ro = {
   "Fă primul pas. Al doilea îl vor face spre tine.",
   "Dacă stai pe gânduri dacă să scrii — scrie.",
   "Azi vei auzi „te iubesc” — în cuvinte sau într-o farfurie de mâncare caldă.",
-  "Partea frumoasă a dragostei e că vine și nepoftită."
+  "Partea frumoasă a dragostei e că vine și nepoftită.",
+  "Cineva ți-a salvat poza. Și nu din greșeală.",
+  "Azi numele tău sună altfel în gura cuiva.",
+  "Omul potrivit te face întâi să râzi și abia apoi să te gândești.",
+  "Azi cuiva îi va fi dor de tine — și îți va spune.",
+  "O privire de la celălalt capăt al camerei va ține o secundă prea mult.",
+  "Dragostei îi plac cei curajoși. Fii curajos cinci minute.",
+  "Cineva ține minte cum îți bei cafeaua.",
+  "Seara asta e pentru doi, chiar dacă unul încă nu știe."
  ],
  "money": [
   "Vin spre tine bani neașteptați. Poate e doar restul, dar vin.",
@@ -239,7 +264,15 @@ L10N.ro = {
   "Vei încheia o sarcină care atârnă de mult. Senzația e neprețuită.",
   "La orizont e un proiect nou. Ascute creioanele.",
   "Ți se va întoarce o datorie veche — în bani sau într-un serviciu.",
-  "Succesul e azi la o ceașcă de cafea distanță."
+  "Succesul e azi la o ceașcă de cafea distanță.",
+  "O economie mică azi devine un obicei frumos.",
+  "Vei găsi un preț mai bun chiar înainte să plătești.",
+  "Cineva te va recomanda fără să-ți spună.",
+  "O pricepere veche a ta e dintr-odată căutată.",
+  "Azi „cât costă?” e întrebarea potrivită. Pune-o.",
+  "O factură iese mai mică decât te temeai.",
+  "O zi bună să trimiți în sfârșit e-mailul acela.",
+  "Azi munca ta vorbește în locul tău. Las-o."
  ],
  "fun": [
   "Cafeaua nu rezolvă problemele. Dar nici apa nu le rezolvă.",
@@ -266,7 +299,15 @@ L10N.ro = {
   "Beau cafea pentru binele tău.",
   "Banii nu aduc fericirea. Dar aduc cafea, ceea ce e aproape același lucru.",
   "Iubesc munca. Pot să mă uit la ea ore întregi.",
-  "Viața e scurtă. Mai toarnă una."
+  "Viața e scurtă. Mai toarnă una.",
+  "Nu sunt om de dimineață. Abia sunt om de după-amiază.",
+  "Eu și patul ne iubim. Alarma e geloasă.",
+  "Antrenamentul de azi: alerg după autobuz și sar la concluzii.",
+  "Am venit, am văzut, am uitat de ce am venit.",
+  "N-am nevoie de frizer. Perna îmi face în fiecare dimineață altă coafură.",
+  "Să fii adult înseamnă să spui în fiecare săptămână „după săptămâna asta va fi mai liniște”.",
+  "Nu mă cert. Explic de ce am dreptate.",
+  "Portofelul meu e ca o ceapă: îl deschid și-mi vine să plâng."
  ],
  "motivation": [
   "Începe de unde ești. Cu ce ai. După cafea.",
@@ -290,7 +331,13 @@ L10N.ro = {
   "Fii omul de care aveai nevoie acum câțiva ani.",
   "Azi nu trebuie să cucerești lumea. E de ajuns să nu renunți.",
   "Ai dreptul la odihnă. Nu ai dreptul să renunți.",
-  "Într-o zi vei povesti cum ai reușit. Începe azi."
+  "Într-o zi vei povesti cum ai reușit. Începe azi.",
+  "Făcut e mai bine decât perfect.",
+  "Nu trebuie să vezi toată scara. Pune piciorul pe prima treaptă.",
+  "Odihna face parte din muncă, nu e o răsplată pentru ea.",
+  "Peste un an te vei bucura că ai început azi.",
+  "Progresul lent e tot progres.",
+  "Întreabă. Cel mai rău răspuns îl ai deja."
  ],
  "adult": [
   "— Iubitule, spune-mi ceva murdar.\n— Bucătăria.",
@@ -328,7 +375,11 @@ L10N.ro = {
   "Organele mele nu sunt bune de donat. Ficatul e piesă de colecție.",
   "Cimitirele sunt pline de oameni de neînlocuit. Și tot mai sunt locuri.",
   "Diagnosticul meu e „luni”. Cronic.",
-  "Dacă mă caută cineva — am murit. Dacă aduce bani — am înviat."
+  "Dacă mă caută cineva — am murit. Dacă aduce bani — am înviat.",
+  "Viața mea e un film. Din păcate, un documentar despre amânare.",
+  "Am un plan B. E planul A, dar cu mai mult plâns.",
+  "Salariul vine ca un musafir: stă puțin și lasă dezordine.",
+  "Experiența e ce primești când n-ai primit ce voiai."
  ],
  "spicy": [
   "În seara asta cineva îți va da jos mai mult decât stelele de pe cer.",
@@ -350,7 +401,11 @@ L10N.ro = {
   "Diseară închide telefonul. Și lumina.",
   "Cafeaua la pat dimineața e răsplata pentru treaba bine făcută noaptea.",
   "Azi „vino încoace” e o propoziție întreagă.",
-  "Masajul din seara asta nu se va termina cu masaj."
+  "Masajul din seara asta nu se va termina cu masaj.",
+  "În seara asta încuie ușa înainte să spui „bună”.",
+  "Cineva îți numără nasturii de la cămașă.",
+  "Vocea ta la telefon o să facă pe cineva să vină diseară.",
+  "Încet e noul repede. Mai ales în seara asta."
  ],
  "combo": {
   "when": [
@@ -651,5 +706,11 @@ L10N.ro = {
    "O potrivire rară — țineți-vă unul de altul.",
    "Stelele ridică din umeri: aici nu e nimic de reparat."
   ]
+ ],
+ "themes": [
+  "Espresso",
+  "Cappuccino",
+  "Miezul nopții",
+  "Matcha"
  ]
 };
