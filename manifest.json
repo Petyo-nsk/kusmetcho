@@ -1,7 +1,7 @@
 {
   "name": "Kusmetcho",
   "short_name": "Kusmetcho",
-  "description": "A lucky note with your coffee — fortunes, laughs and horoscopes in 8 languages.",
+  "description": "A lucky note with your coffee — fortunes, laughs and horoscopes in 9 languages.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
