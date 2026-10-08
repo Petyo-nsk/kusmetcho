@@ -703,6 +703,14 @@ $('title').addEventListener('click', ()=>{
   }
 });
 
+// Линк за проба на собственика: ...?test=parkbook включва премиума, ...?test=off го изключва.
+// МАХНИ ГО преди качване в магазините (заедно със 7-те натискания по-горе).
+{
+  const test = new URLSearchParams(location.search).get('test');
+  if(test === 'parkbook') write(K.premium, 1);
+  if(test === 'off') localStorage.removeItem(K.premium);
+}
+
 function renderAll(){
   const n = T.appName;
   $('title').innerHTML = `${esc(n.slice(0, -1))}<b>${esc(n.slice(-1))}</b>`;
